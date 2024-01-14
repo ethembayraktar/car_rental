@@ -1,0 +1,247 @@
+
+{% extends "base.html" %}
+{% load  static %}
+
+{% block css %}
+{% endblock %}
+
+{% block main %}
+
+    <main>
+<form action="https://www.avis.com.tr/Reservation/ReservationRequest" method="post" class="rent-card fluid has-sticky" id="rentACarModule" data-options='{
+         "defaultDates": {
+             "from": "",
+             "to": ""
+         },
+         "defaultRentType": "Avis",
+         "datepickerLanguage": "tr",
+         "serviceURLs": {
+             "getOffices": "/Offices/GetAllOffices",
+             "getHubOfficesAvailableDates": "/Offices/HubOfficeAvailabilityDates",
+             "getOfficesGeolocation": "/Offices/OfficeListAPIGeo",
+            "getOfficesAvailableDates": "/Offices/OfficeAvailabilityDates",
+             "setDiscount": "/Campaign/CheckDiscountCode"
+         },
+         "geolocationErrorMessage": "Tarayıcınız bu &#246;zelliği desteklemiyor.",
+         "geolocationAccessMessage": "L&#252;tfen konum izni veriniz.",
+         "validationMessage": { "status": "error", "title": "Hata", "message": "L&#252;tfen T&#252;m Alanları Doldurunuz", "buttonText": "Tamam" },
+         "caravanMinResDateError": { "status": "error", "title": "Hata", "message": "Karavan Kiralaması Minimum 2 G&#252;n Olmalıdır", "buttonText": "Tamam" },
+         "discountDetails":
+         {
+           "Avis":
+           {
+               "couponCode": "",
+               "campaignName": "",
+               "discountNo": ""
+           },
+           "Karavan":
+           {
+               "couponCode": "",
+               "campaignName": "",
+               "discountNo": ""
+           }
+         },
+         "discountAppliedMsg": "",
+         "hasYKB": false,
+         "traceID": "",
+         "userEmail":"",
+         "userHashedEmail":"",
+         "isAuthenticated": true,
+		 "reservationSourcePath": "/neden-uye-olmalisin"
+      }' v-on:submit.prevent="sendReservationRequest" v-bind:class="{loading: formSent}" v-on:click.stop="">
+    <div class="spinner-wrapper">
+        <div class="spinner-border" role="status"></div>
+    </div>
+    <input type="hidden" name="discountNo" v-model="discountNo">
+    <input type="hidden" name="selectedCarGroup" value="" />
+    <div class="rent-type-wrapper">
+        <div class="container">
+            <div class="select-rent-type">
+                <label class="item" v-bind:class="{selected: rentType === 'Avis'}">
+                    <input type="radio" class="d-none" name="rentType" value="Avis" v-model="rentType">
+                    <span class="check-icon"></span>
+                    <span>Ara&#231; Kirala</span>
+                </label>
+                <label class="item" v-bind:class="{selected: rentType === 'Karavan'}">
+                    <input type="radio" class="d-none" name="rentType" value="Karavan" v-model="rentType">
+                    <span class="check-icon"></span>
+                    <span>Karavan Kirala</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <div class="form-control-wrapper order-1 d-lg-none">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Alış Ofisi Se&#231;iniz" name="fromLocation" v-model="fromLocation" v-on:input="getOfficeList('from', fromLocation)" v-on:focus="checkFromLocation" autocomplete="off" minlength="3" />
+                    <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('from')">
+                        <i class="icon icon-target"></i>
+                    </button>
+                </div>
+                <div class="office-list-wrapper scrollable-content" v-show="fromLocationShow">
+                    <div class="office-list" data-toggle="scrollableContent">
+                        <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="from" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-control-wrapper order-3 d-lg-none">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="İade Ofisi" name="toLocation" v-model="toLocation" v-on:input="getOfficeList('to', toLocation)" v-on:focus="checkToLocation" autocomplete="off" minlength="3" />
+                    <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('to')">
+                        <i class="icon icon-target"></i>
+                    </button>
+                </div>
+                <div class="office-list-wrapper scrollable-content" v-show="toLocationShow">
+                    <div class="office-list" data-toggle="scrollableContent">
+                        <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="to" />
+                    </div>
+                </div>
+            </div>
+            <div class="rent-card-items">
+                <div class="card-item">
+                    <div class="body-row order-2 ">
+                        <span class="input-desc">Teslim Alma Ofisi</span>
+                        <div class="form-control-wrapper d-none d-lg-flex">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Alış Ofisi Se&#231;iniz" name="fromLocation" v-model="fromLocation" v-on:input="getOfficeList('from', fromLocation)" v-on:focus="checkFromLocation" autocomplete="off" minlength="3" />
+                                <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('from')">
+                                    <i class="icon icon-target"></i>
+                                </button>
+                            </div>
+                            <div class="office-list-wrapper scrollable-content" v-show="fromLocationShow">
+                                <div class="office-list" data-toggle="scrollableContent">
+                                    <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="from" />
+                                </div>
+                            </div>
+                        </div>
+                        <span class="input-desc type2  d-none d-lg-flex">Alış Tarihi</span>
+                        <div class="date" v-on:click="toggleFormItem('datepickerFrom')" v-bind:class="{active: activeFormItem == 'datepickerFrom'}">
+                            <span class="day" v-cloak>{{fromDayNumber}}</span>
+                            <div class="date-detail" v-cloak>
+                                <span>{{fromDayName}}</span>
+                                <span>{{fromMonthName}}</span>
+                            </div>
+                        </div>
+                        <div class="hour" v-on:click="toggleFormItem('hourFrom')" v-bind:class="{active: activeFormItem == 'hourFrom' && this.availableTimesFrom.length > 0, disabled: this.availableTimesFrom.length < 1}" v-if="!fromIsHub" v-html="renderTimeHtml(selectedTimes.from)">
+                        </div>
+                        <div v-cloak id="hourRangeFrom" class="hour type2" v-on:click="toggleFormItem('hourRangeFrom')" v-bind:class="{active: activeFormItem == 'hourRangeFrom', disabled: !hubFromHoursList}" v-if="fromIsHub" data-toggle="tooltip" title="Uygun saat bulunamadı.">
+                            <div v-html="renderRangeTimeHtml(selectedTimes.fromHubText)"></div>
+                        </div>
+                        <div v-cloak class="datepicker-wrapper" v-show="activeFormItem == 'datepickerFrom'">
+                            <div id="rentACarDatepickerFrom" data-next-text="SONRAKİ 3 AY" data-prev-text="&#214;NCEKİ 3 AY" data-number-of-months="3"></div>
+                        </div>
+                        <div v-cloak class="hour-select" v-show="activeFormItem == 'hourFrom' && this.availableTimesFrom.length > 0" v-show="!fromIsHub">
+                            <div class="hour-items" v-for="chunk in availableTimesFrom">
+                                <div class="hour-item" v-for="item in chunk" v-html="renderTimeHtml(item.time)" v-bind:class="{disabled : item.isDisabled, selected: selectedTimes.from === item.time}" v-on:click="selectHour('from', item)"></div>
+                            </div>
+                        </div>
+                        <div v-cloak class="hour-select type2" v-show="activeFormItem == 'hourRangeFrom'" v-show="fromIsHub">
+                            <div class="hour-range-item" v-on:click="setHourRangeFrom(item.Value, item.Date)" v-for="item in hubFromHoursList" v-bind:class="{'active' : selectedTimes.from === item.Value}" v-html="renderRangeTimeHtml(item.Date)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item">
+                    <div class="body-row order-4">
+                        <span class="input-desc">İade Ofisi</span>
+                        <div class="form-control-wrapper  d-none d-lg-flex">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="İade Ofisi" name="toLocation" v-model="toLocation" v-on:input="getOfficeList('to', toLocation)" v-on:focus="checkToLocation" autocomplete="off" minlength="3" />
+                                <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('to')">
+                                    <i class="icon icon-target"></i>
+                                </button>
+                            </div>
+                            <div class="office-list-wrapper scrollable-content" v-show="toLocationShow">
+                                <div class="office-list" data-toggle="scrollableContent">
+                                    <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="to" />
+                                </div>
+                            </div>
+                        </div>
+                        <span class="input-desc type2  d-none d-lg-flex">İade Tarihi</span>
+                        <div class="date" v-on:click="toggleFormItem('datepickerTo')" v-bind:class="{active: activeFormItem == 'datepickerTo'}">
+                            <span class="day" v-cloak>{{toDayNumber}}</span>
+                            <div class="date-detail" v-cloak>
+                                <span>{{toDayName}}</span>
+                                <span>{{toMonthName}}</span>
+                            </div>
+                        </div>
+                        <div class="hour" v-on:click="toggleFormItem('hourTo')" v-bind:class="{active: activeFormItem == 'hourTo' && availableTimesTo.length > 0, disabled: this.availableTimesTo.length < 1}" v-if="!toIsHub" v-html="renderTimeHtml(selectedTimes.to)">
+                        </div>
+                        <div v-cloak id="hourRangeTo" class="hour type2" v-on:click="toggleFormItem('hourRangeTo')" v-bind:class="{active: activeFormItem == 'hourRangeTo', disabled: !hubToHoursList}" v-if="toIsHub" data-toggle="tooltip" title="Uygun saat bulunamadı.">
+                            <div v-html="renderRangeTimeHtml(selectedTimes.toHubText)"></div>
+                        </div>
+                        <div v-cloak class="datepicker-wrapper" v-show="activeFormItem == 'datepickerTo'">
+                            <div id="rentACarDatepickerTo" data-next-text="SONRAKİ 3 AY" data-prev-text="&#214;NCEKİ 3 AY" data-number-of-months="3"></div>
+                        </div>
+                        <div v-cloak class="hour-select" v-show="activeFormItem == 'hourTo' && availableTimesTo.length > 0" v-show="!toIsHub">
+                            <div class="hour-items" v-for="chunk in availableTimesTo">
+                                <div class="hour-item" v-for="item in chunk" v-html="renderTimeHtml(item.time)" v-bind:class="{disabled : item.isDisabled, selected: selectedTimes.to === item.time}" v-on:click="selectHour('to', item)"></div>
+                            </div>
+                        </div>
+                        <div v-cloak class="hour-select type2" v-show="activeFormItem == 'hourRangeTo'" v-show="toIsHub">
+                            <div class="hour-range-item" v-on:click="setHourRangeTo(item.Value, item.Date)" v-for="item in hubToHoursList" v-bind:class="{'active' : selectedTimes.to === item.Value}" v-html="renderRangeTimeHtml(item.Date)"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-item item-btn d-none d-exxl-block">
+                    <button class="btn btn-rounded" type="submit" :disabled="formSent">
+{#                        <span v-cloak>{{dayDiff === 0 ? 'G&#220;NL&#220;K KİRALA': dayDiff + ' GÜN KİRALA' }}</span>#}
+                        <i class="icon icon-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="container d-lg-flex flex-lg-row align-items-lg-center">
+            <div class="item d-flex flex-column align-items-start flex-grow-1">
+                <button class="btn btn-link btn-awd" type="button" v-on:click.stop="awdNumberInputShow = true" v-bind:class="{'d-none': awdNumberInputShow || awdNumberSent || awdNumberNotSent }">
+                    <span>AVIS İNDİRİM NUMARASI</span>
+                    <i class="icon icon-arrow-right ml-auto d-none d-lg-block"></i>
+                    <i class="icon icon-arrow-down ml-auto d-md-none"></i>
+                </button>
+                <div class="collapse-awd w-100" v-bind:class="{'d-flex': awdNumberInputShow}" data-recording-disable>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center flex-grow-1">
+                        <input class="form-control mr-md-3" name="awdNumber" type="text" placeholder="AVIS İndirim Numarasını Yazın" v-model="awdNumber" v-on:click.stop="">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-simple mr-3" type="button" v-on:click.stop="sendAwdNumber">ONAYLA</button>
+                            <button class="btn btn-link btn-cancel" type="button" v-on:click="awdNumberInputShow = false; awdNumber = ''">
+                                <span>İPTAL</span>
+                                <i class="icon icon-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="info-text" v-show="awdNumberSent" v-cloak>
+                    <i class="icon icon-check"></i>
+                    <span>Avis indirim kodu uygulandı.</span>
+                </div>
+                <div v-show="awdNumberNotSent" v-cloak>
+                    <div class="d-flex flex-column flex-md-row align-items-md-center">
+                        <div class="info-text has-error mb-3">
+                            <i class="icon icon-error"></i>
+                            <span>{{discountMessage}}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-simple mr-3" type="button" v-on:click.stop="awdNumberInputShow = true; awdNumberNotSent = false;"> TEKRAR DENE </button>
+                            <button class="btn btn-link btn-cancel" type="button" v-on:click="removeDiscount">
+                                <span>İPTAL</span>
+                                <i class="icon icon-close"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item-btn d-exxl-none">
+                <button class="btn btn-rounded" type="submit">
+{#                    <span v-cloak>{{dayDiff === 0 ? 'G&#220;NL&#220;K KİRALA': dayDiff + ' GÜN KİRALA' }}</span>#}
+                    <i class="icon icon-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+    
+</main>
+{% endblock %}

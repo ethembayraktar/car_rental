@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% load  static %}
+{% block css %}
+{% endblock %} 
+{% block main %} 
+    <main>
+    <form action="{{ ROOT}}/reservatio" method="post" class="rent-card fluid has-sticky" id="rentACarModule"> {% csrf_token %} <div class="rent-type-wrapper">
+            <div class="container">
+                <div class="select-rent-type">
+                    <label class="item">
+                        <span>Araç Kirala</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="form-control-wrapper order-1 d-lg-none">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Alış Ofisi Seçiniz" name="fromLocation" v-model="fromLocation" v-on:input="getOfficeList('from', fromLocation)" v-on:focus="checkFromLocation" autocomplete="off" minlength="3" />
+                        <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('from')">
+                            <i class="icon icon-target"></i>
+                        </button>
+                    </div>
+                    <div class="office-list-wrapper scrollable-content" v-show="fromLocationShow">
+                        <div class="office-list" data-toggle="scrollableContent">
+                            <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="from" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-control-wrapper order-3 d-lg-none">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="İade Ofisi" name="toLocation" v-model="toLocation" v-on:input="getOfficeList('to', toLocation)" v-on:focus="checkToLocation" autocomplete="off" minlength="3" />
+                        <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('to')">
+                            <i class="icon icon-target"></i>
+                        </button>
+                    </div>
+                    <div class="office-list-wrapper scrollable-content" v-show="toLocationShow">
+                        <div class="office-list" data-toggle="scrollableContent">
+                            <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="to" />
+                        </div>
+                    </div>
+                </div>
+                <div class="rent-card-items">
+                    <div class="card-item">
+                        <div class="body-row order-2 ">
+                            <span class="input-desc">Teslim Alma Ofisi</span>
+                            <div class="form-control-wrapper d-none d-lg-flex">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Alış Ofisi Seçiniz" name="fromLocation" v-model="fromLocation" v-on:input="getOfficeList('from', fromLocation)" v-on:focus="checkFromLocation" autocomplete="off" minlength="3" />
+                                    <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('from')">
+                                        <i class="icon icon-target"></i>
+                                    </button>
+                                </div>
+                                <div class="office-list-wrapper scrollable-content" v-show="fromLocationShow">
+                                    <div class="office-list" data-toggle="scrollableContent">
+                                        <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="from" />
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="input-desc type2  d-none d-lg-flex">Alış Tarihi</span>
+                            <div class="date" v-on:click="toggleFormItem('datepickerFrom')" v-bind:class="{active: activeFormItem == 'datepickerFrom'}">
+                                <span class="day" v-cloak>{{fromDayNumber}}</span>
+                                <div class="date-detail" v-cloak>
+                                    <span>{{fromDayName}}</span>
+                                    <span>{{fromMonthName}}</span>
+                                </div>
+                            </div>
+                            <div class="hour" v-on:click="toggleFormItem('hourFrom')" v-bind:class="{active: activeFormItem == 'hourFrom' && this.availableTimesFrom.length > 0, disabled: this.availableTimesFrom.length < 1}" v-if="!fromIsHub" v-html="renderTimeHtml(selectedTimes.from)">
+                            </div>
+                            <div v-cloak id="hourRangeFrom" class="hour type2" v-on:click="toggleFormItem('hourRangeFrom')" v-bind:class="{active: activeFormItem == 'hourRangeFrom', disabled: !hubFromHoursList}" v-if="fromIsHub" data-toggle="tooltip" title="Uygun saat bulunamadı.">
+                                <div v-html="renderRangeTimeHtml(selectedTimes.fromHubText)"></div>
+                            </div>
+                            <div v-cloak class="datepicker-wrapper" v-show="activeFormItem == 'datepickerFrom'">
+                                <div id="rentACarDatepickerFrom" data-next-text="SONRAKİ 3 AY" data-prev-text="&#214;NCEKİ 3 AY" data-number-of-months="3"></div>
+                            </div>
+                            <div v-cloak class="hour-select" v-show="activeFormItem == 'hourFrom' && this.availableTimesFrom.length > 0" v-show="!fromIsHub">
+                                <div class="hour-items" v-for="chunk in availableTimesFrom">
+                                    <div class="hour-item" v-for="item in chunk" v-html="renderTimeHtml(item.time)" v-bind:class="{disabled : item.isDisabled, selected: selectedTimes.from === item.time}" v-on:click="selectHour('from', item)"></div>
+                                </div>
+                            </div>
+                            <div v-cloak class="hour-select type2" v-show="activeFormItem == 'hourRangeFrom'" v-show="fromIsHub">
+                                <div class="hour-range-item" v-on:click="setHourRangeFrom(item.Value, item.Date)" v-for="item in hubFromHoursList" v-bind:class="{'active' : selectedTimes.from === item.Value}" v-html="renderRangeTimeHtml(item.Date)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-item">
+                        <div class="body-row order-4">
+                            <span class="input-desc">İade Ofisi</span>
+                            <div class="form-control-wrapper  d-none d-lg-flex">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="İade Ofisi" name="toLocation" v-model="toLocation" v-on:input="getOfficeList('to', toLocation)" v-on:focus="checkToLocation" autocomplete="off" minlength="3" />
+                                    <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('to')">
+                                        <i class="icon icon-target"></i>
+                                    </button>
+                                </div>
+                                <div class="office-list-wrapper scrollable-content" v-show="toLocationShow">
+                                    <div class="office-list" data-toggle="scrollableContent">
+                                        <office-list-item v-for="item in officeData" :item="item" :office-icon="getOfficeIcon(item)" phone-text="Telefon" office-type="to" />
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="input-desc type2  d-none d-lg-flex">İade Tarihi</span>
+                            <div class="date" v-on:click="toggleFormItem('datepickerTo')" v-bind:class="{active: activeFormItem == 'datepickerTo'}">
+                                <span class="day" v-cloak>{{toDayNumber}}</span>
+                                <div class="date-detail" v-cloak>
+                                    <span>{{toDayName}}</span>
+                                    <span>{{toMonthName}}</span>
+                                </div>
+                            </div>
+                            <div class="hour" v-on:click="toggleFormItem('hourTo')" v-bind:class="{active: activeFormItem == 'hourTo' && availableTimesTo.length > 0, disabled: this.availableTimesTo.length < 1}" v-if="!toIsHub" v-html="renderTimeHtml(selectedTimes.to)">
+                            </div>
+                            <div v-cloak id="hourRangeTo" class="hour type2" v-on:click="toggleFormItem('hourRangeTo')" v-bind:class="{active: activeFormItem == 'hourRangeTo', disabled: !hubToHoursList}" v-if="toIsHub" data-toggle="tooltip" title="Uygun saat bulunamadı.">
+                                <div v-html="renderRangeTimeHtml(selectedTimes.toHubText)"></div>
+                            </div>
+                            <div v-cloak class="datepicker-wrapper" v-show="activeFormItem == 'datepickerTo'">
+                                <div id="rentACarDatepickerTo" data-next-text="SONRAKİ 3 AY" data-prev-text="&#214;NCEKİ 3 AY" data-number-of-months="3"></div>
+                            </div>
+                            <div v-cloak class="hour-select" v-show="activeFormItem == 'hourTo' && availableTimesTo.length > 0" v-show="!toIsHub">
+                                <div class="hour-items" v-for="chunk in availableTimesTo">
+                                    <div class="hour-item" v-for="item in chunk" v-html="renderTimeHtml(item.time)" v-bind:class="{disabled : item.isDisabled, selected: selectedTimes.to === item.time}" v-on:click="selectHour('to', item)"></div>
+                                </div>
+                            </div>
+                            <div v-cloak class="hour-select type2" v-show="activeFormItem == 'hourRangeTo'" v-show="toIsHub">
+                                <div class="hour-range-item" v-on:click="setHourRangeTo(item.Value, item.Date)" v-for="item in hubToHoursList" v-bind:class="{'active' : selectedTimes.to === item.Value}" v-html="renderRangeTimeHtml(item.Date)"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-item item-btn d-none d-exxl-block">
+                        <button class="btn btn-rounded" type="submit" :disabled="formSent">
+                            <span class="day_diff">GÜN KİRALA</span>
+                            <i class="icon icon-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <section class="primary-section" id="">
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-2 col-md-20 col-24">
+                    <div class="section-content overflow-hidden">
+                        <strong>1-TARAFLAR</strong>
+                        <br> İşbu sözleşme, <a href="/">{{  ROOT }}</a>&nbsp; adresinde faaliyet gösteren web sitesinin tüm haklarının sahibi olan,
+                        merkezi “ <em>Aydınevler Mah. Saygı Cad. No:60 Küçükyalı, Maltepe/İstanbul</em>” adresinde bulunan &nbsp; <strong>
+                        Oto Anonim Şirketii</strong> ile siteye üye olan Üye (Bundan böyle “ <strong>Üye</strong>” olarak anılacaktır) arasında, üyenin <a href="/">{{  ROOT }}</a> alan adlı internet sitesi üzerinden kendi iradesi ile yaptığı üye kaydı aşamasında yapılmıştır. Üye, siteye üye olarak, işbu Sözleşmenin tamamını okuduğunu, anladığını ve tüm hükümlerini onayladığını kabul, beyan ve taahhüt eder. <br>
+                        <br>
+                        <strong>2-TANIMLAR</strong>
+                        <br> İşbu Sözleşmede belirtilen; <br>
+                        <strong>{{ frontend.site_name | upper }}:</strong> Oto Anonim Şirketi’ni (kısaca “OTOX”), <br>
+                        <strong>Üye:</strong> Web sitesine üye olan gerçek veya tüzel kişiyi, <br>
+                        <strong>Site:</strong>
+                        <a href="/">{{  ROOT }}</a> alan adı üzerinden yayın yapan web sitesini, <br>
+                        <strong>Araç:</strong> Mülkiyeti {{ frontend.site_name | upper }}’e ait ve kiralamaya konu edilen her marka ve modelde aracı, <br>
+                        <strong>Sözleşme:</strong> İşbu “Websitesi Üyelik Sözleşmesi”ni ifade eder. <br>
+                        <br>
+                        <strong>3-SÖZLEŞMENİN KONUSU</strong>
+                        <br> İşbu Sözleşmenin konusu, araçların <strong>{{ frontend.site_name | upper }}</strong> tarafından sitede çevrimiçi olarak internet üzerinden kiralanmaya sunulmasına dair usul ve esaslar ile {{ frontend.site_name | upper }} ve Üyenin karşılıklı hak ve yükümlülüklerinin belirlenmesidir. İşbu sözleşme, sitede yapılacak olan ve üyenin kiralayacağı araç/araçlar hakkında hüküm ifade eder. <br>
+                        <br>
+                        <strong>4- {{ frontend.site_name | upper }}’IN HAK VE YÜKÜMLÜLÜKLERİ</strong>
+                        <br> 4.1. {{ frontend.site_name | upper }}, kontrol ve denetimi altındaki kişisel kimlik, adres, iletişim bilgilerinin kaybolmasını, suistimal edilmesini ve değiştirilmesini engellemek amacıyla kanunun öngördüğü tüm makul güvenlik tedbirlerini almakla birlikte, bu bilgilerin güvenliğini garanti etmemektedir. Üye’nin siteye aktardığı bilgi ve veriler gizli bilgi şeklinde yorumlanmayacaktır. <br> 4.2. {{ frontend.site_name | upper }} güvenlik nedeniyle Üye’nin site üzerindeki her türlü aktivitesini izleyebilecek, kayda alabilecek ve gerekli gördüğünde, siteden uzaklaştırma, üyelik dondurma, üyelik iptal etme ve benzeri her türlü müdahalede bulunabilecektir. <br> 4.3. {{ frontend.site_name | upper }} önceden Üye’ye bildirimde bulunmaksızın sitenin biçim ve içeriğini kısmen veya tamamen değiştirebileceği gibi, sitenin yayın yaptığı alan adını değiştirebilir, farklı alt alan adları kullanabilir, alan adı yönlendirmesi yapabilir ve/veya alan adını kapatabilecektir. <br> 4.4. Web sitesine üyelik, {{ frontend.site_name | upper }} tarafından araç kiralama hizmetinin sunulması için ön şart olmayıp, Üye olunmaksızın araç kiralama hizmeti alınabileceğinden, Üyelik kapsamında Üye’ye sunulan tüm faydalar, “Ek fayda” niteliğindedir. <br> 4.5. {{ frontend.site_name | upper }} dilediği zamanda ve sebep göstermeksizin, önceden Üye’ye bilgi vermeksizin sitede sunduğu hizmetlerin kapsam ve çeşitlerini değiştirebileceği gibi, sitede sunulan hizmetleri kısmen veya tamamen dondurabilir, sona erdirebilir veya tamamen iptal edebilir. <br> 4.6. {{ frontend.site_name | upper }}, Sözleşmede belirtilen iş ve işlemlerin daha etkin gerçekleştirilebilmesi açısından dilediği zaman hizmet, kiralama şartları ve işleyişte değişiklikler ve/veya güncellemeler yapabilir. Üyeler işbu değişiklikleri kabul ettiklerini, bu değişikliklere uygun davranacaklarını kabul ve beyan ederler. <br> 4.7. İşbu Sözleşme {{ frontend.site_name | upper }}’nin kiralama yapacağı araç adedi, marka, model ve model yılı ve sair hususlarda herhangi bir taahhüt içermez. Üye, bu ve sair nedenlerle {{ frontend.site_name | upper }}’den hiçbir ad altında hak ve alacak talep edemez. <br> 4.8. {{ frontend.site_name | upper }}’nin, kiralama faaliyetlerini tek taraflı olarak başlatmama, durdurma, sona erdirme ve/veya iptal etme hakkı mevcuttur. Üye bu hususta herhangi bir itiraz hakkının mevcut olmadığını kabul, beyan ve taahhüt eder. <br>
+                        <br>
+                        <strong>5- ÜYE’NİN HAK VE YÜKÜMLÜLÜKLERİ</strong>
+                        <br> 5.1. Üyelik, sitede belirtilen üyelik prosedürünün üye olmak isteyen kişi tarafından yerine getirilerek kayıt işleminin yapılması ile tamamlanır. Üye, üye olmakla, işbu Sözleşme hükümlerini, üyeliğe ve hizmetlere ilişkin {{ frontend.site_name | upper }} tarafından açıklanan veya sonradan açıklanacak her türlü beyanı da kabul etmiş olmaktadır. <br> 5.2. Üye, üyelik işlemlerinde belirtmiş olduğu kimlik, ehliyet, adres ve iletişim bilgilerinin eksiksiz ve doğru olduğunu, bilgilerinde değişiklik olması halinde bu bilgileri derhal {{ frontend.site_name | upper }}’e ileteceğini, eksik, güncel olmayan veya yanlış bilgi vermesi nedeniyle ortaya çıkabilecek her türlü hukuki uyuşmazlık ve zarardan sadece kendisinin sorumlu olacağını kabul ve beyan eder. Bu sebeple doğacak hiçbir sorumluluk ve/veya kusur {{ frontend.site_name | upper }}’e yükletilemez. <br> 5.3. Üye, sitede belirtilen hizmetlerden faydalanırken T.C. kanunlarına ve genel ahlak kurallarına uygun hareket edeceğini, hakaret, tehdit, iftira, taciz vb. eylemlerde bulunmayacağını, siyasi veya ideolojik propaganda yapmayacağını, diğer Üye'leri rahatsız edici davranışlar içine girmeyeceğini, kişi veya kurumları lekeleyici her türlü davranıştan uzak duracağını ve sitede verilen hizmetlerin aksamasına ya da kesilmesine neden olabilecek her türlü hareketten kaçınacağını aksi halde oluşacak her türlü zarardan bizzat sorumlu olacağını kabul ve taahhüt eder. <br> 5.4. Üye, üçüncü şahısların fikri ve sınai hakları kapsamındaki haklarını ihlal etmeyeceğini, üçüncü kişilerin telif haklarına saygılı olacağını, haksız rekabette bulunmayacağını ve üçüncü şahısların ticari sırlarına ve özel hayatlarına saygılı olacağını kabul ve taahhüt eder. <br> 5.5. Üye, siteyi kullanırken başkaları tarafından kolay tahmin edilemeyecek bir şifre kullanacağını, kullanıcı adı, şifre vs. bilgilerini başkalarıyla paylaşmayacağını ve bu bilgilerin site veri tabanında tutulmadığından güvenliğinden bizzat ve sadece kendisinin sorumlu olacağını, hiçbir şekilde {{ frontend.site_name | upper }}’in sorumlu olmayacağını kabul ve beyan eder. <br> 5.6. Üye, sadece kendisine ait üyelik hesabını kullanacağını, başka üyelerin hesap bilgilerini kullanmayacağını ve kendisine ait üyelik hesabını başkalarına kullandırtmayacağını aksi durumun {{ frontend.site_name | upper }} tarafından tespit edilmesi halinde üyeliğinin iptal edilebileceğini ve doğmuş/doğacak her türlü zararı tazmin edeceğini kabul ve beyan eder. <br> 5.7.Üye, siteye, zararlı program, yazılım, kod ve benzeri materyal göndermeyeceğini, sitenin ve üyelerin güvenliğini tehlikeye düşürebilecek her türlü hareketten kaçınacağını kabul ve taahhüt eder. <br> 5.8.Üye, üyelik hesabını üçüncü kişilere devredemez. <br> 5.9.Üye, başkalarının siteyi kullanımını kısıtlayamaz, engel olamaz ve sitenin veya siteyi kullanılabilir hale getirmek için kullanılan sunucu veya ağların işletimine müdahale edemez. <br> 5.10.Üyenin, bilgisayar donanımını etkileyen virüs saldırılarından ve/veya siteden edindiği bilgilere istinaden kaynaklanan kayıp ve hasarlar dâhil olmak üzere ancak bunlarla sınırlı olmamak kaydıyla siteye erişimine ve kullanımına ilişkin olarak doğrudan veya dolaylı olarak meydana gelebilecek zararlardan {{ frontend.site_name | upper }} sorumlu değildir. <br> 5.11.Üye, site çalışmasına müdahale etmek veya müdahaleye teşebbüs etmek amacıyla herhangi bir alet, yazılım veya araç kullanmayacağını, siteye yetkisiz olarak bağlanmayacağını ve işlem yapmayacağını, diğer internet kullanıcılarının yazılımlarına ve verilerine izinsiz olarak ulaşmayacağını veya bunları kullanmayacağını kabul eder. <br>
+                        <br>
+                        <strong>6- FİKRİ MÜLKİYET HAKLARI</strong>
+                        <br> 6.1. Sitenin sunumu ve tüm içeriği T.C. Mevzuatı ve fikri mülkiyet mevzuatı tarafından korunmakta olup, bu sitedeki tüm ticari markalar, logolar ve hizmet işaretleri başta olmak üzere, yayınlanan tüm bilgi ve veriler {{ frontend.site_name | upper }} veya lisans verenlere aittir. Üye, {{ frontend.site_name | upper }}’in yazılı onayı olmadan, doğrudan veya dolaylı olarak aynen ya da başka bir şekilde&nbsp; sitenin içeriği dağıtamaz, iletemez, değiştiremez, kopyalayamaz, görüntüleyemez, çoğaltamaz, yayınlayamaz, işleyemez veya başka bir şekilde kullanamaz veya başkasının sitenin hizmetlerine erişmesine veya kullanmasına izin veremez. Aksi takdirde, {{ frontend.site_name | upper }}’in uğradığı/uğrayacağı her türlü zarar ile lisans verenler de dâhil ancak bunlarla sınırlı olmaksızın, üçüncü kişilerin uğradıkları zararlardan dolayı {{ frontend.site_name | upper }}'dan talep edilen her türlü tazminat tutarını, Üye {{ frontend.site_name | upper }}'a ödemekle sorumlu olacaktır. <br> 6.2.{{ frontend.site_name | upper }}'in, Site hizmetleri, Site bilgileri, Site'nin telif haklarına tabi çalışmaları, Site'nin ticari markaları, Site'nin ticari görünümü veya Site'ye ilişkin her türlü maddi ve fikri mülkiyet hakları da dâhil tüm malvarlığı, ayni ve şahsi hakları, ticari bilgi ve know-how'a yönelik tüm hakları saklıdır. <br> 6.3. Sitede yer alan bütün yazıların, grafiklerin, görsellerin ve tüm resimlerin her hakkı saklıdır, izinsiz tasarruf edilemez. <br> 6.4. Site içeriğine, tasarımına ve yazılımına ilişkin tüm mali hakların izinsiz kullanımı (işleme, çoğaltma, yayma, temsil ve umuma arz) bunlarla sınırlı olmamak üzere her türlü izinsiz ifşa ve kullanım, fikri ve sınai mülkiyet haklarının ihlali anlamına gelecektir. <br> 6.5.Üyeler Site'nin kullanımında Türk Borçlar Kanunu, Türk Ceza Kanunu, Fikir ve Sanat Eserleri Kanunu, Türk Ticaret Kanunu, Markalar Hakkında KHK ve mevcut ve/veya ileride yürürlüğe girecek olan her türlü mevzuat hükümlerine uygun davranacaklarını kabul ve taahhüt ederler. Aksi kullanım sebebiyle doğabilecek hukuki, idari, cezai ve mali her türlü sorumluluk Üyeye ait olup {{ frontend.site_name | upper }}'in rücu hakkı saklıdır. <br>
+                        <br>
+                        <strong>7- SORUMLULUK</strong>
+                        <br> Üye, Sitede sunulan/yayınlanan bilgi ve hizmetlerde eksiklik, iletişim sorunları, teknik problemler, altyapı ve internet arızaları, elektrik kesintisi ve/veya sayılanlarla sınırlı olmaksızın başkaca problemler olabileceğini kabul etmekte olup, bu tür problemler/arızalar oluşması durumunda {{ frontend.site_name | upper }} Üye’ye herhangi bir bildirimde bulunmaya gerek olmaksızın ve sebep göstermeksizin sitede araç kiralama faaliyetlerini durdurmaya veya sona erdirmeye veya iptal etmeye yetkilidir. Üye bu nedenlerle {{ frontend.site_name | upper }}’ten hiçbir ad altında hak ve ödeme talep edemez. <br> {{ frontend.site_name | upper }} hizmetin hatasız olacağını veya sürekli sağlanacağını veya hizmetin virüs ve diğer zararlı unsurlardan arınmış olduğunu garanti etmemektedir. {{ frontend.site_name | upper }} üyenin herhangi bir ürün ya da hizmeti kullanmasından kaynaklanacak doğrudan ve/veya dolaylı hasarlardan sorumlu tutulamaz. Üye, hizmeti ya da siteyi kullanması sonucunda ortaya çıkabilecek her türlü hasar ve zarardan bizzat kendisinin sorumlu olduğunu kabul ve beyan eder. <br> {{ frontend.site_name | upper }}, Üyenin sitede yer alan herhangi bir ürün ya da hizmeti kullanmasından kaynaklanacak doğrudan ve/veya dolaylı hasarlardan sorumlu tutulamaz. Üye, hizmeti ya da siteyi kullanması sonucunda ortaya çıkabilecek her türlü hasar ve zarardan bizzat kendisinin sorumlu olduğunu kabul ve beyan eder. <br>
+                        <br>
+                        <strong>8- MÜCBİR SEBEPLER</strong>
+                        <br> Doğal afet, isyan, savaş, grev, iletişim sorunları, teknik problemler, altyapı ve internet arızaları, elektrik kesintisi ve kötü hava koşulları da dâhil ve fakat bunlarla sınırlı olmamak kaydıyla, ilgili tarafın makul kontrolü haricinde ve gerekli özeni göstermesine rağmen önleyemediği, kaçınılamayacak haller olan "Mücbir Sebep" durumlarında; {{ frontend.site_name | upper }}, işbu sözleşme ile belirlenen yükümlülüklerinden herhangi birini geç veya eksik ifa etme veya hiç ifa etmeme hakkına sahiptir. Zira işbu Mücbir Sebep süresince {{ frontend.site_name | upper }}'in yükümlülükleri askıya alınır.&nbsp; Bu ve bunun gibi durumlarda, {{ frontend.site_name | upper }}'e gecikme, eksik ifa etme veya ifa etmeme veya temerrüt addedilmeyecektir. Bu durumlar için {{ frontend.site_name | upper }}'ten her ne nam altında olursa olsun herhangi bir tazminat talep edilemeyecektir. Mücbir sebep halinin 7 (yedi) günden fazla sürmesi halinde {{ frontend.site_name | upper }}, dilerse işbu sözleşmeyi herhangi bir bildirime gerek olmaksızın tazminatsız ve tek taraflı olarak feshetmeye yetkidir. <br>
+                        <br>
+                        <strong>9- ÜYELİK İPTALİ ve SÖZLEŞMENİN FESHİ</strong>
+                        <br> 9.1. Üye'nin işbu sözleşmeden kaynaklanan yükümlülüklerinden herhangi biri veya tamamına kısmen veya tamamen&nbsp; aykırı davranması durumunda {{ frontend.site_name | upper }}, herhangi bir bildirime gerek olmaksızın ve gerekçe göstermeksizin tek taraflı olarak işbu sözleşmeyi feshederek Üye'nin üyeliğini iptal edebilir ve Üye'nin siteden aldığı, almakta olduğu ya da alacağı hizmetleri kısmen veya tamamen dondurulabilir veya iptal edebilir. Bu nedenle fesih durumunda Üye {{ frontend.site_name | upper }}’ten hiçbir hak ve talepte bulunamaz. Üye bu hususa itiraz edemez. <br> 9.2. {{ frontend.site_name | upper }} iş bu sözleşmeyi dilediği takdirde hiçbir sebep göstermeksizin ve herhangi bir bildirime gerek olmaksızın tek taraflı olarak feshederek Üye'nin üyeliğini iptal etmeye ve Üye'nin siteden aldığı, almakta olduğu ya da alacağı hizmetleri kısmen veya tamamen dondurmaya ya da tümüyle iptal etmeye yetkilidir. Bu takdirde Üye haksız, yersiz, sebepsiz, meyilsiz ve zamansız bir fesihte bulunulduğu, iyi niyete aykırı davranıldığı veya sair bir neden ve bahane öne sürerek {{ frontend.site_name | upper }}’ten hiçbir hak, alacak, kar kaybı, zarar ziyan tazminatı veya başkaca bir nam ve unvan altında herhangi bir ödeme&nbsp; talep edemez. <br>
+                        <br>
+                        <strong>10- SÖZLEŞMENİN SÜRESİ</strong>
+                        <br> İşbu Sözleşme Site’de onaylandığı andan itibaren yürürlüğe girer ve {{ frontend.site_name | upper }}’in Üye’nin üyeliğini iptal etmesi ve/veya Site’de sunulan hizmetleri sona erdirmesi ile birlikte başkaca bildirime gerek olmaksızın kendiliğinden sona erer. <br>
+                        <br>
+                        <strong>11- GİZLİLİK VE KİŞİSEL VERİLERİN KORUNMASI</strong>
+                        <br> 11.1 Üye, işbu Sözleşme’nin ifası tahtında {{ frontend.site_name | upper }} ile ilgili olarak doğrudan veya dolaylı olarak edindiği, ticari, mali, hukuki veya teknik nitelikte, ticari sır ya da diğer yasal korumaya konu olan ya da olmayan her türlü bilgiyi gizli tutacak ve {{ frontend.site_name | upper }}’in izni olmaksızın herhangi bir kişiye ifşa etmeyecektir. Aksi halde Üye {{ frontend.site_name | upper }}’in uğradığı zararlardan sorumludur. Ayrıca {{ frontend.site_name | upper }}, kullanıcı profili ve pazar araştırmaları yapmak, rezervasyon ve site kullanım istatistikleri oluşturmak gibi amaçlar dahil ancak bunlarla sınırlı olmamak üzere tüm yasal amaçlar için, Üye'nin kimlik, adres, iletişim, IP ve site kullanım bilgilerini bir veri tabanında toplayabilir ve bu bilgileri herhangi bir kısıtlama olmaksızın kullanabilir. {{ frontend.site_name | upper }}, Üye’ye ilişkin bilgileri sitede sunulan hizmetler ile ilgili sigorta şirketi, banka ile ayrıca gerek gördüğü üçüncü kişi/kurumlarla paylaşmaya yetkilidir. Ayrıca {{ frontend.site_name | upper }} bu bilgileri, yasaların getirdiği zorunluluklara uyma amacıyla veya yetkili adli veya idari otoritenin yürüttüğü soruşturma veya araştırma açısından talep edilmesi durumunda veya kullanıcıların hak ve güvenliklerinin korunması amacıyla üçüncü kişi/kurumlarla paylaşabilir. İşbu gizlilik hükmü sözleşme süresi sona erdikten sonra dahi süresiz olarak geçerlidir.&nbsp; <br> 11.2 Üye’nin Kişisel verileri, otomatik veya otomatik olmayan yollarla sözleşmesel ilişkinin ifası gereğince veya kanunlarda öngörülen sair sebeplerle hizmetlerin işleyişi ve geliştirilmesi çerçevesinde toplanacaktır. {{ frontend.site_name | upper }} tarafından söz konusu kişisel veriler rezervasyon ve araç satışı gibi hizmetlerin sağlanması, duyuru/kutlama ve sair içeriklerle gönderilecek hediye ve iletilerle şirket tanınırlığını arttırmak ve hizmetlerin tanıtımına, pazarlanmasına yönelik genel veya kişiye özel reklam, duyuru, kampanya bilgilerinin sağlanması, daha iyi hizmet sağlamak amacıyla müşteri memnuniyet veya şikâyetlerinin yönetilebilmesi suretiyle müşterilere daha iyi hizmet verebilmek ve sadakat programı çerçevesinde müşteri anketleri yapılabilmesi ve geri bildirim yapılabilmesi gibi sair amaçlarla işlenecektir; Üye bu hususlarda açıkça onay vermiştir. Sözleşmenin ifası, veri güvenliği, Ford Otosan ve Tofaş başta olmak üzere {{ frontend.site_name | upper }}’in bağlı bulunduğu şirketler topluluğu bünyesindeki şirketlere ve onlarla ortak kullanılan veri tabanlarına, başvurularının onayının alınacağı kurum ve kuruluşlara, resmi kurumlara, yetkili temsilcilere, sigorta şirketlerine, bilgi teknolojileri hizmet sağlayıcılarına, çağrı merkezi hizmeti veren şirketlere, nakliye ve kargo gönderimi için aracı olarak kullanılan şirketlere, bilcümle hizmetlerinden faydalanılan veya işbirliği içerisinde olunan üçüncü kişilere aynı şekilde sözleşmenin ifası ve hizmetlerin görülmesi maksadıyla aktarılacaktır; Üye bu hususlarda açıkça rıza göstermiştir. <br> 11.3 Kişisel Verilerin Korunması mevzuatı çerçevesinde kişisel verilerin; işlenip işlenmediğini öğrenme, işlenmişse buna ilişkin bilgi talep etme; işlenme amacını ve tarafımızca bu amaçlara uygun olarak kullanıp kullanılmadığını öğrenme, yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri öğrenme; eksik veya yanlış işlenmesi halinde düzeltilmesi talep etme; işlenmesini gerektiren sebeplerin ortadan kalkması halinde silinmesi veya yok edilmesini ya da anonim haline getirilmesini talep etme; bu hallerde ya da düzeltme halinde bunların veri aktarılan üçüncü kişilere bildirilmesini isteme; işlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle Üye aleyhine bir sonucun ortaya çıktığının düşünülmesi halinde bu duruma itiraz etme; kanuna aykırı olarak işlenmesi sebebiyle bir zarara uğraması halinde bu zararın giderilmesini talep etme; hakları vardır. <br> 11.4 Üye, Elektronik Ticaretin Düzenlenmesi Hakkında Kanun kapsamında hâlihazırda {{ frontend.site_name | upper }} uhdesinde bulunan ya da ileride vereceği iletişim adreslerine ticari elektronik iletiler gönderilmesine onay vermiştir. Temin edilen mal veya hizmetlere ilişkin değişiklik, kullanım ve bakıma yönelik ticari elektronik iletiler dâhil olmak ve fakat bunlarla sınırlı olmamak üzere her türlü ticari amaçla veri, ses ve görüntü içerikli ticari iletiler telefon, çağrı merkezleri, faks, otomatik arama makineleri, akıllı ses kaydedici sistemler, elektronik posta, kısa mesaj hizmeti gibi vasıtalar kullanılarak elektronik ortamda gönderilebilecektir. <br>
+                        <br>
+                        <strong>12- TEBLİGAT</strong>
+                        <br> Taraflar, üyelik işlemleri esnasında belirttiği adreslerinin kanuni tebligat adresleri olduğunu, adres değişikliğinin diğer tarafa yazılı olarak bildirilmediği sürece bu adreslere yapılacak bildirimlerin kanunen geçerli tebligatın bütün hukuki sonuçlarını doğuracağını kabul ve taahhüt ederler. <br> Üye, sözleşme ve hizmetlerde yapılacak değişikliklerin, üyeliğin iptalinin, işbu sözleşmenin feshinin, sona erdirilmesinin vs. her türlü bildirimin üyelik işlemleri esnasına belirttiği e-posta adresine yapılmasına muvafakat etmiş olup, e-posta ile yapılan bildirimler ulaşsın veya ulaşmasın bildirimin {{ frontend.site_name | upper }} tarafından gönderildiği andan itibaren tebliğ edilmiş olduğunu ve hukuki sonuçlarını doğuracağını kabul ve taahhüt eder. Bildirimin üyeye geç ulaşması veya ulaşmamasından ve sonuçlarından {{ frontend.site_name | upper }} sorumlu değildir. Üye’nin {{ frontend.site_name | upper }} ile yapacağı yazışmalarda elektronik posta ve faks kullanılamaz. <br>
+                        <br>
+                        <strong>13- SÖZLEŞME HÜKÜMLERİNDE DEĞİŞİKLİK</strong>
+                        <br> {{ frontend.site_name | upper }}, Üye’ye bildirimde bulunmaya gerek olmaksızın ve sebep göstermeksizin işbu sözleşme hükümlerinde tek taraflı olarak değişiklik yapma hakkına sahiptir. Üye, bahse konu değişiklikleri Site’de yayınlandığı andan itibaren kabul etmiş sayılır. Üye, bu hususu şimdiden gayri kabili rücu olarak kabul eder. <br>
+                        <br>
+                        <strong>14- YETKİ ve DELİL ANLAŞMASI</strong>
+                        <br> 14.1.İşbu sözleşmenin uygulanmasından kaynaklanan sorunların çözümünde Türk Hukuku uygulanacak ve İstanbul Anadolu Mahkemeleri ile İcra Daireleri yetkili olacaktır. <br> 14.2.Üye, çıkabilecek ihtilaflarda, {{ frontend.site_name | upper }}’in her türlü belge, kayıt, defterleri ile bilgisayar ve internet ortamındaki her türlü, bilgi, yazı ve kayıtlarının tek, münhasır ve kesin delil teşkil edeceğini ve bağlayıcı olacağını, bu maddenin HMK.193 maddesi kapsamında bir delil sözleşmesi olduğunu kabul eder. <br>
+                        <br>
+                        <strong>15- DİĞER HÜKÜMLER</strong>
+                        <br> 15.1. İşbu Sözleşmenin herhangi bir hükmünün, herhangi bir nedenden dolayı geçersiz sayılması veya uygulanabilirliğinin kalmaması halinde, sözleşmenin diğer hükümleri yürürlükte kalacaktır. <br> 15.2. {{ frontend.site_name | upper }}’in Sözleşme tahtında sahip olduğu herhangi bir hak veya yetkiyi kullanmaması ya da kullanmakta gecikmesi o hak veya yetkiden feragat ettiği anlamına gelmediği gibi, bir hak veya yetkinin tek başına veya kısmen kullanılması o veya başka bir hak veya yetkinin daha sonra kullanılmasını engellemez.&nbsp; Bu Sözleşme’nin herhangi bir koşul, madde veya hükmünden feragat edilmesi o koşul, madde veya hükümden daha sonra veya devamlı olarak feragat edildiği anlamına gelmez veya bu şekilde yorumlanamaz. <br> 15.3.İşbu sözleşme Site’de onaylandığı andan itibaren, varsa daha önce Site’de onaylanan sözleşmenin yerine geçer. İhtilaf halinde, hangi sözleşmenin yürürlükte olduğu dönemden kaynaklandığına bakılmaksızın, bu sözleşme hükümleri uygulanır. Üye, varsa daha önce Site’de onaylanan sözleşme ve ticari işleyişten dolayı {{ frontend.site_name | upper }}’ten hiçbir hak ve alacağı olmadığını, {{ frontend.site_name | upper }}’i her türlü konuda en geniş manada gayri kabili rücu olarak ibra ettiğini, bahse konu sözleşme ve ticari ilişkiden dolayı {{ frontend.site_name | upper }}’e karşı doğmuş ve/veya doğacak tüm sorumluluklarının devam ettiğini kabul, beyan ve taahhüt eder. <br> 15.4.Üye, sitede yer alan tüm uygulama ve kuralları okuyup anladıklarını ve kabul ettiklerini beyan ederler. Üye, sözleşmenin tamamında yer alan menfaatlerine aykırı olabilecek düzenlemeleri de sonuçlarını bilerek ve anlayarak kabul ettiğini beyan eder. <br> 15.5.Üye, işbu sözleşmeden kaynaklanan hak, alacak ve yükümlülüklerini öncesinde {{ frontend.site_name | upper }}’in yazılı iznini almaksızın üçüncü kişilere devir veya temlik edemez. <br> 15.6 Kanunlar tarafından izin verilen kapsamda {{ frontend.site_name | upper }} dolaylı, netice kabilinden doğan veya cezai tazminatlardan (sınırlı kalmamak kaydıyla kaybedilen kârlar dâhil) yükümlü olmayacaktır. {{ frontend.site_name | upper }}’in Üye’yi tazmin etme yükümlülüğü dâhil olmak üzere herhangi bir yükümlülüğün veya garantinin ihlali nedeniyle ortaya çıkan zararlarla ilgili yükümlülüğü ve üçüncü kişileri tazmin etme yükümlülüğü, işbu Sözleşmeyle bağlantılı olarak {{ frontend.site_name | upper }}’e ödenecek olan toplam ücretin tutarı ile sınırlıdır. Her hâlükârda {{ frontend.site_name | upper }}, Üye’nin uğradığı dolaylı zararlardan hiçbir şekilde sorumlu olmayacaktır. <br>
+                        <br>
+                        <strong>16. YÜRÜRLÜLÜK ve KABUL</strong>
+                        <br> 16.1. İşbu Sözleşme {{ frontend.site_name | upper }} tarafından {{ frontend.site_name | upper }} içerisinde ilan edildiği tarihte yürürlük kazanır. Üye’ler, işbu sözleşme hükümlerini {{ frontend.site_name | upper }}’i kullanmakla kabul etmiş olmaktadırlar. {{ frontend.site_name | upper }} dilediği zaman iş bu sözleşme hükümlerinde değişikliğe gidebilir ve değişiklikler versiyon numarası ve değişiklik tarihi belirtilerek {{ frontend.site_name | upper }} üzerinde yayınlandığı tarihte herhangi bir bildirim ve/veya kabule bağlı kalmaksızın doğrudan yürürlüğe girer. <br> 16.2. Üye, işbu Sözleşmeden doğabilecek ihtilaflarda "OTOX OTOMOTİV" veri tabanlarında, sunucularında tuttuğu elektronik ve sistem kayıtlarının, ticari kayıtlarının, defter kayıtlarının, mikrofilm, mikrofiş ve bilgisayar kayıtlarının muteber bağlayıcı, kesin ve münhasır delil teşkil edeceğini, "OTOX OTOMOTİV"i yemin teklifinden beri kıldığını ve bu maddenin 6100 Sayılı HMK 193. Madde anlamında delil sözleşmesi niteliğinde olduğunu kabul, beyan ve taahhüt eder.
+                    </div>
+                    <div class="modal image-popup type-fullsize" id="fullScrennVideoModal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="icon icon-close"></i>
+                                </button>
+                                <div class="modal-body">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item" title="" allowfullscreen=""></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main> 
+{% endblock %}

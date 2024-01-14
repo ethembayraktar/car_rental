@@ -1,0 +1,333 @@
+{% extends "base.html" %}
+{% load  static %}
+
+{% block css %} 
+{% endblock %}
+
+{% block main %} 
+    <main>
+    <section class="page-header">
+        <div class="container">
+            <h1 class="title">{{ frontend.site_name }}’e Üye Olun</h1>
+            <p class="desc">{{ frontend.site_name }}'in Size Özel Ayrıcalıklarından Yararlanmak İçin Üye Olun</p>
+        </div>
+    </section>
+    <section class="primary-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-12 col-lg-13 col-24" data-recording-disable>
+                    <form action="{{ ROOT }}/Account/Register" class="primary-form" data-ajax-error="Hata! Lütfen tekrar deneyiniz." data-loader="true" data-reset="false" data-toggle="primaryForm" id="individualMembership" method="post">
+                        <input name="__RequestVerificationToken" type="hidden" value="zs3cMqsmojOl96befjLI7_YYAs9bbz_wO-tOTzb7crsIeDNuWqgbKp0EK5jtfy4Um9Vbawyb8u0V-HtkGmg_-MiCSdZDlRgOwqRBwBTAy8s1" />
+                        <input type="hidden" name="ReturnUrl">
+                        <div class="form-header">
+                            <h4 class="form-title">Bireysel Üyelik Bilgileri</h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="name" class="field-desc">Adınız (ehliyetinizde yer aldığı gibi) *</label>
+                                    <input class="form-control required onlyLetters" type="text" id="name" name="name" data-msg-required="Bu alan boş bırakılamaz." data-msg-onlyLetters="Geçersiz İsim" data-msg-minlength="Adınız minimum 2 karakter olmalıdır." maxlength="30" minlength="2">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="surname" class="field-desc">Soyadınız (ehliyetinizde yer aldığı gibi) *</label>
+                                    <input class="form-control required onlyLetters" type="text" id="surname" name="surname" data-msg-required="Bu alan boş bırakılamaz." data-msg-onlyLetters="Geçersiz Soyadı" data-msg-minlength="Soyadınız minimum 2 karakter olmalıdır." maxlength="50" minlength="2">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="tcOrPassport" class="field-desc">T.C. No ya da Pasaport No *</label>
+                                    <input class="form-control required tcOrPassport" type="text" id="tcOrPassport" name="tcOrPassport" data-msg-required="Bu alan boş bırakılamaz." data-msg-number="Geçersiz TC/Pasaport numarası." data-msg-letterAndNumber="Geçersiz TC/Pasaport numarası." data-msg-tcOrPassport="Geçersiz TC/Pasaport numarası.">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="birthYear" class="field-desc">Doğum Tarihi *</label>
+                                    <input class="form-control required birthday-mask ageValidation" type="text" id="birthYear" name="birthYear" data-placeholder="gg/aa/yyyy" data-msg-required="Bu alan boş bırakılamaz." data-msg-number="Geçersiz doğum tarihi." data-msg-ageValidation="18 yaşından büyük olmalısınız." data-msg-birthday="Geçersiz doğum tarihi.">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group  ">
+                                    <label for="phone" class="field-desc">Cep telefonu *</label>
+                                    <input class="form-control required intlTelNumber" data-blur-on-otp="true" type="text" id="phone" name="phone" data-msg-intlTelNumber="Geçersiz telefon numarası." data-msg-required="Bu alan boş bırakılamaz." data-toggle="intTelInput" data-default-country="tr">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="email" class="field-desc">E-Posta *</label>
+                                    <input class="form-control required email" type="email" id="email" name="email" data-msg-required="Bu alan boş bırakılamaz." data-msg-emailAddress="Geçersiz e-posta adresi." maxlength="50">
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="password" class="field-desc">Şifre *</label>
+                                    <div class="has-icon" data-toggle="showPassword">
+                                        <input class="form-control required passwordRule" type="password" id="password" name="password" data-msg-passwordRule="En az 8 karakter, bir büyük, bir küçük harf, bir rakam ve bir ö;zel karakterden (!,.,-,_ gibi) oluşmalıdır." data-msg-required="Bu alan boş bırakılamaz.">
+                                        <div class="form-control-icon">
+                                            <i class="icon icon-eye" data-toggle="btn"></i>
+                                            <i class="icon icon-question-circle" data-toggle="tooltip" data-placement="top" title="Lütfen bu alana kullanıcı için belirlemek istediğiniz şifreyi giriniz."></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-24">
+                                <div class="form-group">
+                                    <label for="passwordAgain" class="field-desc">Şifre Tekrar *</label>
+                                    <div class="has-icon" data-toggle="showPassword">
+                                        <input class="form-control required passwordRule" type="password" id="passwordAgain" name="passwordAgain" data-msg-passwordRule="En az 8 karakter, bir büyük, bir küçük harf, bir rakam ve bir ö;zel karakterden (!,.,-,_ gibi) oluşmalıdır." data-msg-required="Bu alan boş bırakılamaz." data-msg-equalTo="Şifreler eşleşmiyor." equalTo="#password">
+                                        <div class="form-control-icon">
+                                            <i class="icon icon-eye" data-toggle="btn"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <p>Otokoç Otomotiv Ticaret ve Sanayi Anonim Şirketi tarafından <a href="#clerifyTextModal" data-toggle="modal">Aydınlatma Metni</a> kapsamında sunulan; </p>
+                            <div class="form-icheck d-flex align-items-center">
+                                <div class="pt-1">
+                                    <input class="primary-icheck" name="consent" id="consent" type="checkbox" value="consent" required>
+                                </div>
+                                <label class="consent-label" for="consent">
+                                    <a href="{{ ROOT }}/uyelik-sozlesmesi" target="_blank">Üyelik Sözleşmesini </a>okudum kabul ediyorum. </label>
+                            </div>
+                            <div v-show="(isTCCitizen && !customerHasForeignNumber) || (!isTCCitizen && !customerHasForeignNumber)">
+                                <div class="form-icheck d-flex align-items-start">
+                                    <div class="pt-1">
+                                        <input class="primary-icheck" name="kvkk1" id="kvkk1" type="checkbox" value="true" data-confirm-item="true">
+                                    </div>
+                                    <label class="consent-label" for="kvkk1">
+                                        <a href="#clerifyTextModal" data-toggle="modal"></a> Kimlik, iletişim, müşteri işlem, pazarlama ve araç-sigorta verilerimin, sunulan ürün ve hizmetlerin beğenilerime, kullanım alışkanlıklarıma ve ihtiyaçlarıma gö;re ö;zelleştirilmesi ve bu kapsamda iletişim bilgilerime reklam, promosyon, kampanya ve benzeri ticari elektronik ileti gö;nderilmesi amaçları ile işlenmesini, bu amaçla Otokoç’un hizmet aldığı tedarikçilerle paylaşılmasını kabul ediyorum. </label>
+                                </div>
+                            </div>
+                            <div v-show="(isTCCitizen && !customerHasForeignNumber) || (!isTCCitizen && !customerHasForeignNumber)">
+                                <div class="form-icheck d-flex align-items-start">
+                                    <div class="pt-1">
+                                        <input class="primary-icheck" name="kvkk2" id="kvkk2" type="checkbox" value="true" data-confirm-item="false">
+                                    </div>
+                                    <label class="consent-label" for="kvkk2">
+                                        <a href="#clerifyTextModal" data-toggle="modal"></a> Kimlik, araç, lokasyon, müşteri işlem ve pazarlama verilerimin, sürüş bazında puan kazanımı ile bana ö;zel şartlarda kasko ürünleri sunulması için Connected Car sürüş ve hizmet kullanım performansımın analizi yapılması amacıyla işlenmesini kabul ediyorum. </label>
+                                </div>
+                            </div>
+                            <div class="modal primary-modal" id="clerifyTextModal">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="text-align: center;">
+                                                OTOKOÇ OTOMOTİV TİCARET VE SANAYİ ANONİM ŞİRKETİ <br /> KİŞİSEL VERİLERİN KORUNMASI VE İŞLENMESİ <br /> MÜŞTERİ AYDINLATMA METNİ 
+                                            </h4>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <i class="icon icon-close"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="icon-scroll"></div> &nbsp; <br />
+                                            <strong>
+                                                <u>Veri Sorumlusu</u>
+                                            </strong>
+                                            <br />
+                                            <br /> 6698 sayılı Kişisel Verilerin Korunması Kanunu (&ldquo;Kanun&rdquo;) uyarınca, veri sorumlusu sıfatıyla hareket eden Otokoç Otomotiv Ticaret ve Sanayi Anonim Şirketi (&ldquo;Şirket&rdquo;) tarafından kişisel verilerinizin korunmasına büyük önem verilmektedir. <br /> Kişisel verilerinizin Şirketimiz tarafından işlenme amaçları konusunda detaylı bilgilere, <a href="https://otokocotomotiv.com.tr/kvk_politikasi.pdf" target="_blank">https://otokocotomotiv.com.tr/kvk_politikasi.pdf</a> linkinden erişilebilen Otokoç Otomotiv Ticaret ve Sanayi Anonim Şirketi Kişisel Verilerin Korunması ve İşlenmesi Politikası&rsquo;ndan (&ldquo;Politika&rdquo;) ulaşabilirsiniz. <br />
+                                            <br />
+                                            <strong>
+                                                <u>Kişisel Verilerin Hangi Amaçla İşleneceği</u>
+                                            </strong>
+                                            <br />
+                                            <br /> Toplanan kişisel verileriniz, Şirketimiz tarafından sunulan ürün ve hizmetlerden sizleri faydalandırmak için gerekli çalışmaların iş birimlerimiz tarafından yapılması ve ilgili iş süreçlerinin yürütülmesi, Şirketimiz tarafından yürütülen ticari faaliyetlerin gerçekleştirilmesi için ilgili iş birimlerimiz tarafından gerekli çalışmaların yapılması ve buna bağlı iş süreçlerinin yürütülmesi ile Şirketimiz ve Şirketimizle iş ilişkisi içerisinde olan ilgili kişilerin hukuki, teknik ve ticari-iş güvenliğinin temini ile amaçları kapsamında aşağıdaki amaçlarla (&ldquo;Amaçlar&rdquo;) ve Kanun&rsquo;un 5. ve 6. maddelerinde belirtilen kişisel veri işleme şartları dahilinde işlenebilecektir: <br />
+                                            <br />
+                                            <strong>
+                                                <u>{{ frontend.site_name }} &amp; Budget ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Saatlik/günlük/aylık araç veya lastik kiralama hizmetimizden faydalanmanızın sağlanması ve bu kapsamda rezervasyonların alınması veya iptal taleplerinin yerine getirilmesi,</li>
+                                                <li>Kira anlaşmalarının akdedilmesi ve icrası,</li>
+                                                <li>Tarafınıza tahsis edilen araç ile hızlı geçiş sistemi (HGS) ve benzeri sistemler kapsamındaki geçiş bilgilerinizin takip edilmesi ve bu şekilde söz konusu olan cezaların yönetimi,</li>
+                                                <li>Lokasyon takibi yapılması,</li>
+                                                <li>Yakıt seviyesinin takip edilmesi,</li>
+                                                <li>Araç paylaşım hizmetinin kullanılması durumunda varış lokasyonunun kaydı,</li>
+                                                <li>Connected Car ürün ve hizmetlerimizden faydalandırılmanız,</li>
+                                                <li>Connected Car ürün ve hizmetlerimizden faydalandırılmanız kapsamında onay vermiş olmanız halinde; kimlik, lokasyon, araç, müşteri işlem ve pazarlama verilerinizin kasko ürününün size özel fiyatlandırma yapılarak sunulması için sürüş performansınızın analizi ve risk oranının düşük bulunması kasko ürününde indirim yapılması, sürüş bazında puan kazanımı ve puanlara bağlı avantajlar sağlanması amaçlarıyla işlenmesi,</li>
+                                            </ul>
+                                            <strong>
+                                                <u>Otokoç ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Araç satışlarının gerçekleştirilmesi,</li>
+                                                <li>Araç bakım hizmetlerinin sağlanması,</li>
+                                                <li>Satış sonrası destek hizmetlerin gerçekleştirilmesi,</li>
+                                                <li>Vale hizmetinin sağlanması,</li>
+                                            </ul> &nbsp; <br />
+                                            <strong>
+                                                <u>Otokoç 2. El ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>İkinci el araç satışlarının gerçekleştirilmesi,</li>
+                                                <li>Nakit araç alımı hizmetlerinin gerçekleştirilmesi,</li>
+                                                <li>İhale ile araç alım satım süreçlerinin gerçekleştirilmesi,</li>
+                                                <li>Araç ekspertiz hizmetinin sunulması,</li>
+                                            </ul>
+                                            <strong>
+                                                <u>{{ frontend.site_name }} Filo ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Uzun dönem araç veya lastik kiralama hizmetimizden faydalanmanızın sağlanması ve bu kapsamda rezervasyonların alınması veya iptal taleplerinin yerine getirilmesi,</li>
+                                                <li>Kira anlaşmalarının akdedilmesi ve icrası,</li>
+                                                <li>Tarafınıza tahsis edilen araç ile hızlı geçiş sistemi (HGS) ve benzeri sistemler kapsamındaki geçiş bilgilerinizin takip edilmesi ve bu şekilde söz konusu olan cezaların yönetimi,</li>
+                                                <li>HGS / OGS sağlanması,</li>
+                                                <li>Periyodik araç bakımı süreçlerinin yerine getirilmesi,</li>
+                                                <li>Filo araç kiralama sigortaları, kaza ve hasar yönetimi gibi talebiniz doğrultusunda ek hizmetlerin sağlanması,</li>
+                                            </ul>
+                                            <strong>
+                                                <u>Otokoç Parça ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Araç yedek parça ve aksesuar satışlarının icrası,</li>
+                                                <li>Montaj hizmetlerinin verilmesi,</li>
+                                            </ul>
+                                            <strong>
+                                                <u>Zipcar ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Dakikalık/saatlik/günlük/aylık araç kiralama hizmetimizden faydalanmanızın sağlanması ve bu kapsamda rezervasyonların alınması veya iptal taleplerinin yerine getirilmesi,</li>
+                                                <li>Kira anlaşmalarının akdedilmesi ve icrası,</li>
+                                                <li>Tarafınıza tahsis edilen araç ile hızlı geçiş sistemi (HGS) ve benzeri sistemler kapsamındaki geçiş bilgilerinizin takip edilmesi ve bu şekilde söz konusu olan cezaların yönetimi,</li>
+                                                <li>Lokasyon takibi yapılması,</li>
+                                                <li>Yakıt seviyesinin takip edilmesi,</li>
+                                                <li>Araç paylaşım hizmetinin kullanılması durumunda varış lokasyonunun kaydı,</li>
+                                                <li>Connected Car ürün ve hizmetlerimizden faydalandırılmanız,</li>
+                                                <li>Zipcar uygulaması üzerinden işbirliklerinin duyurulması,</li>
+                                                <li>Kaza ve arıza halinde çekici çağırılması, yol yardımı sağlanması, arıza bildirimlerinin yapılması,</li>
+                                                <li>Yol çalışmaları hakkında bilgi verilmesi,</li>
+                                                <li>Connected Car ürün ve hizmetlerimizden faydalandırılmanız kapsamında onay vermiş olmanız halinde; kimlik, lokasyon, araç, müşteri işlem ve pazarlama verilerinizin kasko ürününün size özel fiyatlandırma yapılarak sunulması için sürüş performansınızın analizi ve risk oranının düşük bulunması kasko ürününde indirim yapılması, sürüş bazında puan kazanımı ve puanlara bağlı avantajlar sağlanması amaçlarıyla işlenmesi,</li>
+                                            </ul>
+                                            <strong>
+                                                <u>Lastick ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Lastik satışlarının gerçekleştirilmesi,</li>
+                                                <li>Montaj hizmeti verilmesi,</li>
+                                            </ul> &nbsp; <br /> &nbsp; <br />
+                                            <strong>
+                                                <u>Tüm ürün ve hizmetlerimize ilişkin olarak;</u>
+                                            </strong>
+                                            <ul>
+                                                <li>Kayıt ve işlemlerinize ilişkin doğrulama ve/veya aktivasyon süreçlerinin gerçekleştirilmesi,</li>
+                                                <li>Randevu oluşturulması ve teklif verilmesi,</li>
+                                                <li>Satış kayıtlarının açılması, online/offline ödeme ve faturalandırma faaliyetlerinin gerçekleştirilmesi,</li>
+                                                <li>Şirketimizin ürün ve hizmetlerini satın almanız dolayısıyla satış sözleşmesinin kurulması veya ifası,</li>
+                                                <li>Ürün ve hizmetlerimiz hakkında bilgilendirme ve tanıtım faaliyetlerinin yerine getirilmesi,</li>
+                                                <li>Üyeliklerin oluşturulması, takibi veya iptali,</li>
+                                                <li>Araç koruma hizmetlerinin sunumu,</li>
+                                                <li>Şirket operasyonlarının ve araçlarının güvenliğinin temini,</li>
+                                                <li>Satış sonrası destek hizmetlerinin yerine getirilmesi,</li>
+                                                <li>Muhasebe ve finans süreçlerinin yürütülmesi,</li>
+                                                <li>Müşterilerin finansal risk değerlendirmelerinin gerçekleştirilmesi,</li>
+                                                <li>Talep, soru, şikâyet ve önerilerinizin alınması, değerlendirilmesi ve sonuçlandırılması,</li>
+                                                <li>Müşteri bilgilerinin güncellenmesi,</li>
+                                                <li>Mevzuatta öngörülen saklama yükümlülüklerine uygunluğun sağlanması,</li>
+                                                <li>Şirketimiz tarafından işlenen kişisel verileriniz ile ilgili olarak Kanun&rsquo;un 11. maddesinde belirtilen haklarınızın kullanılması kapsamında Şirket&rsquo;e iletmiş olduğunuz başvurularınıza ilişkin değerlendirmelerin yapılması ve mevzuata uygun olarak sonuçlandırılması ile bu çerçevede gerekli işlemlerin gerçekleştirilmesi,</li>
+                                                <li>İleride meydana gelmesi muhtemel olası uyuşmazlıklarda delil teşkil etmesi amacı ile kayıtların genel zamanaşımı süresince saklanması,</li>
+                                                <li>Müşteri ilişkileri yönetimi süreçlerinin planlanması ve icrası,</li>
+                                                <li>Hukuki işlerinin takibi ve yürütülmesi,</li>
+                                                <li>Hizmetlere ilişkin faaliyetlerin takibi ve geliştirilmesi,</li>
+                                                <li>Resmi kurum taleplerinin yerine getirilmesi ve yetkili kuruluşlara mevzuattan kaynaklı bilgi verilmesi,</li>
+                                                <li>Bilgi güvenliği süreçlerinin yürütülmesi,</li>
+                                                <li>Denetim ve etik faaliyetlerinin gerçekleştirilmesi,</li>
+                                                <li>Müşteri memnuniyeti ve kurumsal iletişim faaliyetlerinin planlanması ve icrası,</li>
+                                                <li>Çekiliş, kampanya, yarışma, promosyon veya reklam aktivitelerinin gerçekleştirilmesi,</li>
+                                                <li>Sadakat programı üyelerine ek menfaatler sağlanması,</li>
+                                                <li>Onay vermiş olmanız halinde sağlık verilerinizin kazaya karışılması durumunda satış sonrası destek hizmetlerinin sunulması amacıyla işlenmesi,</li>
+                                                <li>Web sitesi veya uygulamalarımızda bulunan üyelik hesaplarınıza ait kullanıcı adı, şifre ve hesaba ait diğer bilgilerin Şirketimiz markalarına ait web siteleri ve/veya uygulama üyelik hesaplarına aktarımı ve işlenmesi,</li>
+                                                <li>Onay vermiş olmanız halinde kimlik, iletişim, müşteri işlem, pazarlama ve araç-sigorta verilerinizin Şirketimiz tarafından sunulan ürün ve hizmetlerin beğeni, kullanım alışkanlıklarınıza ve ihtiyaçlarınıza göre özelleştirilerek size önerilmesi ve bu kapsamda iletişim bilgilerinize reklam, promosyon, kampanya ve benzeri ticari elektronik ileti gönderilmesi amaçları ile işlenmesi.</li>
+                                            </ul> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> &nbsp; <br />
+                                            <strong>&nbsp; <u>İşlenen Kişisel Verilerin Kimlere ve Hangi Amaçla Aktarılabileceği</u>
+                                            </strong>
+                                            <br /> Toplanan kişisel verileriniz; Amaçlar&rsquo;ın gerçekleştirilmesi doğrultusunda, iş/çözüm ortaklarımıza, tedarikçilerimize, kanunen yetkili kamu kurumlarına ve kanunen yetkili özel kişilere Kanun&rsquo;un 8. maddesinde belirtilen kişisel veri işleme şartları ve amaçları çerçevesinde aktarılabilecektir. Kişisel verilerinizin aktarıldığı taraflar ile ilgili detaylı bilgilere Politika&rsquo;dan ulaşabilirsiniz. <br />
+                                            {{ frontend.site_name }} araç kiralama hizmetlerinden faydalanmanız halinde; <br /> Kimlik, iletişim, müşteri işlem, finansal ve pazarlama verileriniz; günlük veya aylık araç kiralama hizmetlerinden faydalandırma kapsamında rezervasyonların alınması, kira anlaşmalarının akdedilmesi ve icrası, iptal taleplerinin alınması ve yerine getirilmesi,&nbsp; hizmetlere ilişkin faaliyetlerin takibi ve sadakat programı üyelerine ek menfaatler sağlanması ve üyeliklerin oluşturulması, takibi veya iptali; amaçlarıyla, Kişisel Verileri Koruma Kurulu&rsquo;nun E-67322700-045.02-0000137706 sayılı 04.04.2023 tarihli &ldquo;Yurt Dışına Veri Aktarımına İlişkin Taahhütname Başvurusu&rdquo; kararı uyarınca, yurt dışında mukim veri işleyen {{ frontend.site_name }} Europe and Middle East Limited ile Kanun&rsquo;un 9. maddesinde belirtilen kişisel veri işleme şartları çerçevesinde paylaşılabilecektir. <br /> Kimlik, iletişim, müşteri işlem, finansal ve pazarlama verileriniz, hizmete ilişkin faaliyetlerin takibi ve organizasyonun sağlanması, performans ölçümlemelerinin gerçekleştirilmesi, Otokoç&rsquo;un lisans ücretlerinin hesaplanması ve finansal işlemlerin gerçekleştirilmesi, rezervasyon taleplerinin ve iptallerinin, üyelik oluşturulmasının, takibinin ve iptallerinin ve sadakat programı faaliyetlerinin raporlanması, yurt dışındaki hizmetlerden faydalanmayı istemeniz halinde araç kiralama hizmetlerinin sağlanması ve üyelik faaliyetlerinin gerçekleştirilmesi amaçlarıyla, Kişisel Verileri Koruma Kurulu&rsquo;nun E-67322700-045.02-0000137706 sayılı 04.04.2023 tarihli &ldquo;Yurt Dışına Veri Aktarımına İlişkin Taahhütname Başvurusu&rdquo; kararı uyarınca, &nbsp;yurt dışında mukim {{ frontend.site_name }} Europe and Middle East Limited ile Kanun&rsquo;un 9. maddesinde belirtilen kişisel veri işleme şartları çerçevesinde paylaşılabilecektir. <br /> &nbsp; <br />
+                                            <strong>
+                                                <u>Kişisel Veri Toplamanın Yöntemi ve Hukuki Sebebi</u>
+                                            </strong>
+                                            <br /> Kişisel verileriniz Şirketimiz tarafından, ürün veya hizmetlerimizin satışı veya sunulması kapsamında Şirketimiz ile temas etmeniz halinde elektronik ortamda internet sitemiz, mobil uygulamalarımız, sosyal medya hesaplarımız, e-posta, çağrı merkezi ve araç kullanımınız vasıtasıyla; fiziki ortamda kargo/posta, faks, yüz yüze gerçekleştirilen görüşmeler kanalları vasıtasıyla Kanun&rsquo;un 5. ve 6. maddelerinde belirtilen ve aşağıda sunulan hukuki sebeplere dayalı olarak toplanmaktadır. <br /> Bir sözleşmenin kurulması veya ifasıyla doğrudan doğruya ilgili olması kaydıyla, sözleşmenin taraflarına ait kişisel verilerin işlenmesinin gerekli olması hukuki sebebine dayalı olarak; <ul>
+                                                <li>Araç satışlarının gerçekleştirilmesi,</li>
+                                                <li>Nakit araç alımı hizmetlerinin gerçekleştirilmesi,</li>
+                                                <li>İhale ile araç alım satım süreçlerinin gerçekleştirilmesi,</li>
+                                                <li>İkinci el araç satışlarının gerçekleştirilmesi,</li>
+                                                <li>Saatlik/günlük/aylık araç veya lastik kiralama hizmetimizden faydalanmanızın sağlanması ve bu kapsamda rezervasyonların alınması veya iptal taleplerinin yerine getirilmesi,</li>
+                                                <li>Uzun dönem araç veya lastik kiralama hizmetimizden faydalanmanızın sağlanması ve bu kapsamda rezervasyonların alınması veya iptal taleplerinin yerine getirilmesi,</li>
+                                                <li>Vale hizmetinin sağlanması,</li>
+                                                <li>Araç bakım hizmetlerinin sağlanması,</li>
+                                                <li>Araç ekspertiz hizmetinin sunulması,</li>
+                                                <li>HGS / OGS sağlanması,</li>
+                                                <li>Periyodik araç bakımı süreçlerinin yerine getirilmesi,</li>
+                                                <li>Filo araç kiralama sigortaları, kaza ve hasar yönetimi gibi talebiniz doğrultusunda ek hizmetlerin sağlanması,</li>
+                                                <li>Kira anlaşmalarının akdedilmesi ve icrası,</li>
+                                                <li>Araç yedek parça ve aksesuar satışlarının icrası,</li>
+                                                <li>Zipcar rezervasyon, kiralama ve iptal işlemlerinin gerçekleştirilmesinin sağlanması,</li>
+                                                <li>Kaza ve arıza halinde çekici çağırılması, yol yardımı sağlanması,</li>
+                                                <li>Araç paylaşım hizmetinin kullanılması durumunda varış lokasyonunun kaydı,</li>
+                                                <li>Connected Car ürün ve hizmetlerimizden faydalandırılmanız,</li>
+                                                <li>Lastik satışlarının gerçekleştirilmesi,</li>
+                                                <li>Montaj hizmeti verilmesi,</li>
+                                                <li>Randevu oluşturulması ve teklif verilmesi,</li>
+                                                <li>Satış kayıtlarının açılması, online/offline ödeme ve faturalandırma faaliyetlerinin gerçekleştirilmesi,</li>
+                                                <li>Şirketimizin ürün ve hizmetlerini satın almanız dolayısıyla satış sözleşmesinin kurulması veya ifası,</li>
+                                                <li>Müşteri bilgilerinin güncellenmesi,</li>
+                                                <li>Kayıt ve işlemlerinize ilişkin doğrulama ve/veya aktivasyon süreçlerinin gerçekleştirilmesi,</li>
+                                                <li>Üyeliklerin oluşturulması, takibi veya iptali,</li>
+                                                <li>Araç koruma hizmetlerinin sunumu,</li>
+                                                <li>Satış sonrası destek hizmetlerinin yerine getirilmesi,</li>
+                                                <li>Sadakat programı üyelerine ek menfaatler sağlanması,</li>
+                                            </ul> &nbsp; <br /> Kanunlarca açıkça öngörülmesi ve Şirketimizin hukuki yükümlülüğünü yerine getirebilmesi için zorunlu olması hukuki sebebine dayalı olarak; <ul>
+                                                <li>Resmi kurum taleplerinin yerine getirilmesi ve yetkili kuruluşlara mevzuattan kaynaklı bilgi verilmesi,</li>
+                                                <li>Mevzuatta öngörülen saklama yükümlülüklerine uygunluğun sağlanması,</li>
+                                                <li>Şirketimiz tarafından işlenen kişisel verileriniz ile ilgili olarak Kanun&rsquo;un 11. maddesinde belirtilen haklarınızın kullanılması kapsamında Şirket&rsquo;e iletmiş olduğunuz başvurularınıza ilişkin değerlendirmelerin yapılması ve mevzuata uygun olarak sonuçlandırılması ile bu çerçevede gerekli işlemlerin gerçekleştirilmesi.</li>
+                                            </ul> Bir hakkın tesisi, kullanılması veya korunması için veri işlemenin zorunlu olması hukuki sebebine dayalı olarak; <ul>
+                                                <li>Talep, soru, şikâyet ve önerilerinizin alınması, değerlendirilmesi ve sonuçlandırılması,</li>
+                                                <li>İleride meydana gelmesi muhtemel olası uyuşmazlıklarda delil teşkil etmesi amacı ile kayıtların genel zamanaşımı süresince saklanması.</li>
+                                            </ul> &nbsp; <br /> &nbsp; <br /> &nbsp; <br /> İlgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla, veri sorumlusunun meşru menfaatleri için veri işlenmesinin zorunlu olması hukuki sebebine dayalı olarak; <ul>
+                                                <li>Ürün ve hizmetlerimiz hakkında bilgilendirme ve tanıtım faaliyetlerinin yerine getirilmesi,</li>
+                                                <li>Zipcar ürün ve hizmetlerimiz kapsamında; Zipcar uygulaması üzerinden işbirliklerinin duyurulması, arıza bildirimlerinin yapılması, yakıt seviyesinin takibi, yol çalışmaları hakkında bilgi verilmesi, araç paylaşım hizmetinin kullanılması durumunda varış lokasyonunun kaydı,</li>
+                                                <li>Şirket operasyonlarının ve araçlarının güvenliğinin temini,</li>
+                                                <li>Tarafınıza tahsis edilen araç ile hızlı geçiş sistemi (HGS) ve benzeri sistemler kapsamındaki geçiş bilgilerinizin takip edilmesi ve bu şekilde söz konusu olan cezaların yönetimi,</li>
+                                                <li>Kayıt ve işlemlerinize ilişkin doğrulama ve/veya aktivasyon süreçlerinin gerçekleştirilmesi,</li>
+                                                <li>Muhasebe ve finans süreçlerinin yürütülmesi,</li>
+                                                <li>Müşterilerin finansal risk değerlendirmelerinin gerçekleştirilmesi,</li>
+                                                <li>Müşteri ilişkileri yönetimi süreçlerinin planlanması ve icrası,</li>
+                                                <li>Hukuki işlerinin takibi ve yürütülmesi,</li>
+                                                <li>Bilgi güvenliği süreçlerinin yürütülmesi,</li>
+                                                <li>Denetim ve etik faaliyetlerinin gerçekleştirilmesi,</li>
+                                                <li>Hizmetlere ilişkin faaliyetlerin takibi ve geliştirilmesi,</li>
+                                                <li>Müşteri memnuniyeti ve kurumsal iletişim faaliyetlerinin planlanması ve icrası,</li>
+                                                <li>Çekiliş, kampanya, yarışma, promosyon veya reklam aktivitelerinin gerçekleştirilmesi,</li>
+                                            </ul> &nbsp; <br />
+                                            <u>Açık rızanızı vermeniz halinde;</u>
+                                            <br /> Connected Car ürün ve hizmetlerimizden faydalandırılmanız kapsamında; kimlik, araç, lokasyon, müşteri işlem ve pazarlama verilerinizin kasko ürününün size özel fiyatlandırma yapılarak sunulması için sürüş performansınızın analizi ve risk oranının düşük bulunması kasko ürününde indirim yapılması, sürüş bazında puan kazanımı ve puanlara bağlı avantajlar sağlanması amaçlarıyla işlenmesi, <br /> Sağlık verilerinizin kazaya karışılması durumunda satış sonrası destek hizmetlerinin sunulması amacıyla işlenmesi, <br /> Kimlik, iletişim, müşteri işlem, pazarlama ile araç ve sigorta bilgilerinizin Şirketimiz tarafından sunulan ürün ve hizmetlerin beğeni, kullanım alışkanlıklarınıza ve ihtiyaçlarınıza göre özelleştirilmesi ve bu kapsamda iletişim bilgilerinize reklam, promosyon, kampanya ve benzeri ticari elektronik ileti gönderilmesi amacıyla işlenmesi. <br /> &nbsp; <br />
+                                            <u>İlgili Kişinin Kanun&rsquo;un 11. Maddesinde Sayılan Hakları</u>
+                                            <ul>
+                                                <li>İlgili kişi olarak Kanun&rsquo;un 11. maddesi uyarınca aşağıdaki haklara sahip olduğunuzu bildiririz:</li>
+                                                <li>Kişisel veri işlenip işlenmediğini öğrenme,</li>
+                                                <li>Kişisel verileri işlenmişse buna ilişkin bilgi talep etme,</li>
+                                                <li>Kişisel verilerin işlenme amacını ve bunların amacına uygun kullanılıp kullanılmadığını öğrenme,</li>
+                                                <li>Yurt içinde veya yurt dışında kişisel verilerin aktarıldığı üçüncü kişileri bilme,</li>
+                                                <li>Kişisel verilerin eksik veya yanlış işlenmiş olması hâlinde bunların düzeltilmesini isteme ve bu kapsamda yapılan işlemin kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+                                                <li>Kanun ve ilgili diğer kanun hükümlerine uygun olarak işlenmiş olmasına rağmen, işlenmesini gerektiren sebeplerin ortadan kalkması hâlinde kişisel verilerin silinmesini veya yok edilmesini isteme ve bu kapsamda yapılan işlemin kişisel verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,</li>
+                                                <li>İşlenen verilerin münhasıran otomatik sistemler vasıtasıyla analiz edilmesi suretiyle kişinin kendisi aleyhine bir sonucun ortaya çıkmasına itiraz etme,</li>
+                                                <li>Kişisel verilerin kanuna aykırı olarak işlenmesi sebebiyle zarara uğraması hâlinde zararın giderilmesini talep etme haklarına sahiptir.</li>
+                                            </ul> &nbsp; <br /> Yukarıda sıralanan haklarınıza yönelik başvurularınızı, <a href="{{ ROOT }}/veri_sahibi_basvuru_formu.pdf">https://otokocotomotiv.com.tr/veri_sahibi_basvuru_formu.pdf</a> adresinden ulaşabileceğiniz Veri Sahibi Başvuru Formu&rsquo;nu doldurarak Şirketimize iletebilirsiniz.&nbsp; Talebinizin niteliğine göre en kısa sürede ve en geç otuz gün içinde başvurularınız ücretsiz olarak sonuçlandırılacaktır; ancak işlemin ayrıca bir maliyet gerektirmesi halinde Kişisel Verileri Koruma Kurulu tarafından belirlenecek tarifeye göre tarafınızdan ücret talep edilebilecektir. <br /> &nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-rounded medium min-width-160 ml-md-auto mb-4" type="submit" disabled>
+                                <span class="loading-text">GÖNDERİLİYOR</span>
+                                <span>ÜYE OL</span>
+                                <i class="icon icon-arrow-right"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main> 
+{% endblock %}

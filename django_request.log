@@ -1,0 +1,2226 @@
+2024-01-11 13:42:57,743 [WARNING] django.request: Not Found: /
+2024-01-11 13:42:57,840 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 11:53:23,163 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 187, in _get_session
+    return self._session_cache
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: django_session
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 71, in dispatch
+    if not request.user.is_authenticated:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\functional.py", line 251, in inner
+    self._setup()
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 33, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\auth\middleware.py", line 13, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 209, in get_user
+    user_id = _get_user_session_key(request)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 62, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+                                               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 53, in __getitem__
+    return self._session[key]
+           ^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 192, in _get_session
+    self._session_cache = self.load()
+                          ^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 42, in load
+    s = self._get_session_from_db()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 32, in _get_session_from_db
+    return self.model.objects.get(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 643, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 380, in __len__
+    self._fetch_all()
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 1926, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: django_session
+2024-01-14 11:53:23,384 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 11:53:50,757 [ERROR] django.request: Internal Server Error: /login
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 102, in get
+    template = loader.get_template('login.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: login.html
+2024-01-14 11:54:24,886 [ERROR] django.request: Internal Server Error: /login
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 102, in get
+    template = loader.get_template('login.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: login.html
+2024-01-14 11:54:28,223 [ERROR] django.request: Internal Server Error: /login
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 102, in get
+    template = loader.get_template('login.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: login.html
+2024-01-14 11:54:36,884 [ERROR] django.request: Internal Server Error: /login
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 102, in get
+    template = loader.get_template('login.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: login.html
+2024-01-14 12:02:47,911 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'dayDiff'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 60, in get
+    template = loader.get_template(f'index.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 974, in do_if
+    nodelist = parser.parse(("endif",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 640: 'dayDiff', expected 'endif'. Did you forget to register or load this tag?
+2024-01-14 12:04:20,199 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-iconsf9e7.ttf
+2024-01-14 12:04:20,209 [WARNING] django.request: Not Found: /assets/css/components.min.css
+2024-01-14 12:04:20,218 [WARNING] django.request: Not Found: /assets/css/default.min.css
+2024-01-14 12:04:20,227 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 12:04:20,234 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 12:04:20,243 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 12:04:20,250 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 12:04:20,256 [WARNING] django.request: Not Found: /assets/js/jquery-3.7.1.min.js
+2024-01-14 12:04:20,262 [WARNING] django.request: Not Found: /assets/js/components.min.js
+2024-01-14 12:04:20,270 [WARNING] django.request: Not Found: /assets/js/default.min.js
+2024-01-14 12:04:20,279 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:04:20,287 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:04:20,296 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:04:20,304 [WARNING] django.request: Not Found: /assets/img/lazyload.png
+2024-01-14 12:04:20,313 [WARNING] django.request: Not Found: /assets/img/avis-logo.svg
+2024-01-14 12:04:20,322 [WARNING] django.request: Not Found: /assets/img/language-en.png
+2024-01-14 12:04:20,330 [WARNING] django.request: Not Found: /assets/img/whatsapp.svg
+2024-01-14 12:04:20,339 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js
+2024-01-14 12:04:20,346 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js
+2024-01-14 12:04:20,355 [WARNING] django.request: Not Found: /assets/js/components.min24b9.js
+2024-01-14 12:04:20,363 [WARNING] django.request: Not Found: /assets/js/default.min24b9.js
+2024-01-14 12:04:20,373 [WARNING] django.request: Not Found: /rum-static.pingdom.net/pa-603367457c17460013000188.js
+2024-01-14 12:04:20,380 [WARNING] django.request: Not Found: /assets/js/ykb/passport.merchant.js
+2024-01-14 12:04:20,389 [WARNING] django.request: Not Found: /assets/js/ykb/passport.mobile.native.js
+2024-01-14 12:04:20,397 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:04:20,413 [WARNING] django.request: Not Found: /assets/css/components.min24b9.css
+2024-01-14 12:04:20,421 [WARNING] django.request: Not Found: /assets/css/default.min24b9.css
+2024-01-14 12:04:41,256 [WARNING] django.request: Not Found: /assets/img/favicons/favicon.ico
+2024-01-14 12:16:40,697 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-iconsf9e7.ttf
+2024-01-14 12:16:40,719 [WARNING] django.request: Not Found: /assets/css/components.min.css
+2024-01-14 12:16:40,733 [WARNING] django.request: Not Found: /assets/css/default.min.css
+2024-01-14 12:16:40,749 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 12:16:40,778 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 12:16:40,822 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 12:16:40,848 [WARNING] django.request: Not Found: /assets/css/components.min24b9.css
+2024-01-14 12:16:40,892 [WARNING] django.request: Not Found: /assets/css/default.min24b9.css
+2024-01-14 12:16:40,903 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 12:16:40,933 [WARNING] django.request: Not Found: /assets/js/components.min.js
+2024-01-14 12:16:40,935 [WARNING] django.request: Not Found: /assets/js/jquery-3.7.1.min.js
+2024-01-14 12:16:40,980 [WARNING] django.request: Not Found: /assets/img/language-en.png
+2024-01-14 12:16:40,982 [WARNING] django.request: Not Found: /assets/js/default.min.js
+2024-01-14 12:16:41,026 [WARNING] django.request: Not Found: /assets/img/avis-logo.svg
+2024-01-14 12:16:41,033 [WARNING] django.request: Not Found: /assets/img/lazyload.png
+2024-01-14 12:16:41,035 [WARNING] django.request: Not Found: /assets/img/whatsapp.svg
+2024-01-14 12:16:41,037 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:16:41,054 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js
+2024-01-14 12:16:41,059 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:16:41,090 [WARNING] django.request: Not Found: /assets/js/components.min24b9.js
+2024-01-14 12:16:41,093 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:16:41,106 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js
+2024-01-14 12:16:41,108 [WARNING] django.request: Not Found: /rum-static.pingdom.net/pa-603367457c17460013000188.js
+2024-01-14 12:16:41,125 [WARNING] django.request: Not Found: /assets/js/default.min24b9.js
+2024-01-14 12:16:41,133 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:16:41,135 [WARNING] django.request: Not Found: /assets/js/ykb/passport.mobile.native.js
+2024-01-14 12:16:41,139 [WARNING] django.request: Not Found: /assets/js/ykb/passport.merchant.js
+2024-01-14 12:32:59,470 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 60, in get
+    template = loader.get_template(f'index.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: 'static'. Did you forget to register or load this tag?
+2024-01-14 12:34:12,564 [WARNING] django.request: Not Found: /{%static 'assets/fonts/avis-icons/fonts/avis-iconsf9e7.ttf
+2024-01-14 12:34:12,906 [WARNING] django.request: Not Found: /{%static 'assets/css/default.min24b9.css
+2024-01-14 12:34:12,907 [WARNING] django.request: Not Found: /{%static 'assets/css/components.min24b9.css
+2024-01-14 12:34:12,911 [WARNING] django.request: Not Found: /{%static 'assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 12:34:12,918 [WARNING] django.request: Not Found: /{%static 'assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 12:34:12,929 [WARNING] django.request: Not Found: /{%static 'assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 12:34:12,934 [WARNING] django.request: Not Found: /{%static 'assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 12:34:12,953 [WARNING] django.request: Not Found: /{%static 'assets/js/components.min.js
+2024-01-14 12:34:12,956 [WARNING] django.request: Not Found: /{%static 'assets/js/jquery-3.7.1.min.js
+2024-01-14 12:34:12,960 [WARNING] django.request: Not Found: /{%static 'assets/js/default.min.js
+2024-01-14 12:34:12,972 [WARNING] django.request: Not Found: /assets/img/avis-logo.svg
+2024-01-14 12:34:12,978 [WARNING] django.request: Not Found: /assets/img/language-en.png
+2024-01-14 12:34:12,990 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:34:12,993 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:34:13,001 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:34:13,013 [WARNING] django.request: Not Found: /assets/img/lazyload.png
+2024-01-14 12:34:13,021 [WARNING] django.request: Not Found: /assets/img/whatsapp.svg
+2024-01-14 12:34:13,025 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js
+2024-01-14 12:34:13,035 [WARNING] django.request: Not Found: /assets/js/jquery-3.7.1.min.js
+2024-01-14 12:34:13,050 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js
+2024-01-14 12:34:13,054 [WARNING] django.request: Not Found: /assets/js/components.min24b9.js
+2024-01-14 12:34:13,061 [WARNING] django.request: Not Found: /assets/js/default.min24b9.js
+2024-01-14 12:34:13,076 [WARNING] django.request: Not Found: /rum-static.pingdom.net/pa-603367457c17460013000188.js
+2024-01-14 12:34:13,079 [WARNING] django.request: Not Found: /assets/js/ykb/passport.mobile.native.js
+2024-01-14 12:34:13,081 [WARNING] django.request: Not Found: /assets/js/ykb/passport.merchant.js
+2024-01-14 12:34:13,088 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:34:33,640 [WARNING] django.request: Not Found: /{%static 'assets/img/favicons/favicon.ico
+2024-01-14 12:37:44,806 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:37:44,807 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:37:44,817 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:37:44,823 [WARNING] django.request: Not Found: /assets/img/lazyload.png
+2024-01-14 12:37:44,830 [WARNING] django.request: Not Found: /assets/img/avis-logo.svg
+2024-01-14 12:37:44,837 [WARNING] django.request: Not Found: /assets/img/language-en.png
+2024-01-14 12:37:44,853 [WARNING] django.request: Not Found: /assets/img/whatsapp.svg
+2024-01-14 12:37:45,074 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:40:01,748 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 12:40:01,750 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:40:01,753 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:40:01,766 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:40:01,769 [WARNING] django.request: Not Found: /{%static 'assets/img/avis-logo.svg
+2024-01-14 12:40:02,054 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:40:22,036 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:40:22,045 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:40:22,055 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:40:22,356 [WARNING] django.request: Not Found: /{%static 'assets/img/avis-logo.svg
+2024-01-14 12:40:22,375 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 12:40:22,673 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:42:11,223 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/mobil/Gorsel-451fb.jpg
+2024-01-14 12:42:11,224 [WARNING] django.request: Not Found: /{%static 'assets/img/avis-logo.svg
+2024-01-14 12:42:11,225 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:42:11,226 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:42:11,238 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 12:42:11,240 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 12:42:11,246 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 12:42:11,258 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:44:40,777 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:44:40,778 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:44:40,782 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 12:44:40,795 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 12:44:40,796 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 12:44:40,808 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 12:46:29,884 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 12:46:29,891 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 12:46:29,904 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 12:46:29,905 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 12:46:29,916 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 12:46:30,214 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 12:46:30,215 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 12:46:30,224 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 12:46:30,230 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 12:46:30,236 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 12:46:30,247 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 12:46:30,248 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 12:46:30,257 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 12:46:30,260 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 12:46:30,270 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 12:46:30,271 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 12:46:30,283 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 12:46:30,284 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 12:46:30,291 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:13:28,913 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:13:28,918 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:13:29,155 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:13:29,156 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:13:29,157 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:13:29,171 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:13:29,173 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:13:29,174 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:13:29,189 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:13:29,192 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:13:29,194 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:13:29,217 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:13:29,218 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:13:29,219 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:13:29,235 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:13:29,247 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:13:29,249 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:13:29,251 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:13:29,258 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:13:59,259 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:13:59,272 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:13:59,276 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:13:59,290 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:13:59,292 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:13:59,587 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:13:59,589 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:13:59,592 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:13:59,604 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:13:59,631 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:13:59,632 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:13:59,635 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:13:59,653 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:13:59,655 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:13:59,663 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:13:59,674 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:13:59,678 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:13:59,680 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:13:59,685 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:15:38,398 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:15:38,408 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:15:38,723 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:15:38,728 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:15:38,740 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:15:38,742 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:15:38,760 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:15:38,763 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:15:38,768 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:15:38,777 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:15:38,785 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:15:38,792 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:15:38,795 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:15:38,804 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:15:38,808 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:15:38,818 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:15:38,821 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:15:38,831 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:15:38,835 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:15:47,715 [WARNING] django.request: Not Found: /en.html
+2024-01-14 13:17:19,466 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:17:19,473 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:17:19,502 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:17:19,504 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:17:19,505 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:17:19,523 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:17:19,525 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:17:19,539 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:17:19,540 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:17:19,554 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:17:19,555 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:17:19,566 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:17:19,567 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:17:19,578 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:17:19,579 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:17:19,590 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:17:19,591 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:17:19,602 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:17:19,679 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:17:20,745 [ERROR] django.request: Internal Server Error: /en.html
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 68, in get
+    template = loader.get_template(f'en.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: 'static'. Did you forget to register or load this tag?
+2024-01-14 13:19:01,736 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:19:01,739 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:19:01,746 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:19:01,758 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:19:01,764 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:19:01,775 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:19:01,780 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:19:01,788 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:19:01,793 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:19:01,803 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:19:01,807 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:19:01,818 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:19:01,821 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:19:01,832 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:19:01,836 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:19:01,846 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:19:01,849 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:19:01,858 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:19:02,042 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:20:14,239 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:20:14,249 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:20:14,287 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:20:14,293 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:20:14,297 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:20:14,313 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:20:14,315 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:20:14,319 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:20:14,332 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:20:14,333 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:20:14,337 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:20:14,348 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:20:14,355 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:20:14,356 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:20:14,374 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:20:14,375 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:20:14,390 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:20:14,392 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:20:14,582 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:20:36,743 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:20:36,744 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:20:36,745 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:20:36,763 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:20:36,766 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:20:36,767 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:20:36,784 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:20:36,786 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:20:36,789 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:20:36,816 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:20:36,818 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:20:36,819 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:20:36,851 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:20:36,853 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:20:36,857 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:20:36,883 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:20:36,884 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:20:36,887 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:20:36,976 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:20:38,901 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 13:20:38,903 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 13:20:38,907 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 13:20:38,920 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 13:20:38,933 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 13:20:38,943 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 13:20:38,945 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 13:20:38,948 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 13:20:38,967 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 13:20:38,969 [WARNING] django.request: Not Found: /{%static 'assets/img/whatsapp.svg
+2024-01-14 13:20:38,971 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 13:20:38,988 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 13:20:38,995 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 13:20:39,008 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 13:20:39,011 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 13:20:39,018 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 13:20:39,037 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-app.js' %}
+2024-01-14 13:20:39,039 [WARNING] django.request: Not Found: /www.gstatic.com/firebasejs/6.3.3/firebase-messaging.js' %}
+2024-01-14 13:20:39,058 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 13:59:20,786 [ERROR] django.request: Internal Server Error: /index.html
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'enblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 61, in get
+    return HttpResponse(template.render(context, request))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 401: 'enblock', expected 'endblock'. Did you forget to register or load this tag?
+2024-01-14 13:59:21,026 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 14:01:33,815 [ERROR] django.request: Internal Server Error: /index.html
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'enblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 61, in get
+    return HttpResponse(template.render(context, request))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 401: 'enblock', expected 'endblock'. Did you forget to register or load this tag?
+2024-01-14 14:01:59,153 [ERROR] django.request: Internal Server Error: /index.html
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endlock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 61, in get
+    return HttpResponse(template.render(context, request))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 134, in render
+    compiled_parent = self.get_parent(context)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 131, in get_parent
+    return self.find_template(parent, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 109, in find_template
+    template, origin = context.template.engine.find_template(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    raise self.error(token, e)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 401: 'endlock', expected 'endblock'. Did you forget to register or load this tag?
+2024-01-14 14:02:14,604 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:02:14,617 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:02:14,638 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:02:14,683 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:02:14,704 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:02:14,714 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:02:14,724 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:02:14,766 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:02:14,776 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:02:14,817 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:02:14,828 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:02:14,837 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:02:14,847 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:02:14,987 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:02:15,004 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:02:15,009 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:02:15,360 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:03:37,786 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:03:37,826 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:03:37,836 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:03:37,959 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:03:37,967 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:03:38,134 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:03:38,145 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:03:38,153 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:03:38,162 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:03:38,170 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:03:38,196 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:03:38,210 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:03:38,222 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:03:38,233 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:03:38,247 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:03:38,256 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:03:39,445 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:04:03,752 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:09:39,006 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:09:39,017 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:09:39,091 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:09:39,093 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:09:39,109 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:09:39,111 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:09:39,125 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:09:39,127 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:09:39,152 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:09:39,154 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:09:39,156 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:09:39,157 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:09:39,186 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:09:39,187 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:09:39,189 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:09:39,203 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:09:39,204 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:09:39,436 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:10:05,178 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:10:05,216 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:10:05,235 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:10:05,310 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:10:05,313 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:10:05,316 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:10:05,324 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:10:05,437 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:10:05,440 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:10:05,445 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:10:05,460 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:10:05,463 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:10:05,464 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:10:05,507 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:10:05,510 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:10:05,519 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:10:05,552 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:10:07,169 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:19:01,707 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:19:01,734 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:19:01,738 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:19:01,815 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:19:01,817 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:19:01,840 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:19:01,843 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:19:01,917 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:19:01,924 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:19:01,940 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:19:02,017 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:19:02,100 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:19:02,169 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:19:02,233 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:19:02,235 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:19:02,240 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:19:02,249 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:19:02,294 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:25:21,118 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:25:21,128 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:25:21,226 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:25:21,228 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:25:21,247 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:25:21,268 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:25:21,277 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:25:21,280 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:25:21,297 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:25:21,305 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:25:21,309 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:25:21,317 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:25:21,333 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:25:21,360 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:25:21,373 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:25:21,383 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:25:21,385 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:25:22,668 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:30:10,246 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:30:10,278 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:30:10,302 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:30:10,413 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:30:10,414 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:30:10,428 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:30:10,444 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:30:10,455 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:30:10,467 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:30:10,548 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:30:10,558 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:30:10,569 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:30:10,583 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:30:10,595 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:30:10,604 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:30:10,722 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:30:10,726 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:30:10,730 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:32:36,331 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:32:36,367 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:32:36,385 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:32:36,494 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:32:36,495 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:32:36,507 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:32:36,509 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:32:36,603 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:32:36,607 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:32:36,624 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:32:36,627 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:32:36,636 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:32:36,705 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:32:36,717 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:32:36,728 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:32:36,738 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:32:36,750 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:32:37,632 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:33:29,734 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:33:29,749 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:33:29,751 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:33:29,913 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:33:29,918 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:33:29,920 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:33:29,926 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:33:30,100 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:33:30,102 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:33:30,105 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:33:30,110 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:33:30,113 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:33:30,198 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:33:30,200 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:33:30,202 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:33:30,204 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:33:30,306 [WARNING] django.request: Not Found: /Offices/OfficeListAPIGeo
+2024-01-14 14:33:31,464 [WARNING] django.request: Not Found: /undefined
+2024-01-14 14:33:42,389 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:33:42,422 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:33:42,466 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:33:42,470 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:33:42,482 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:33:42,491 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:33:42,500 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:33:42,531 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:33:42,538 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:33:42,548 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:33:42,562 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:33:42,572 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:33:42,584 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:33:42,595 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:33:42,686 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:33:42,699 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:42:42,406 [WARNING] django.request: Not Found: /Avis/media/Avis/kampanyalar/avis-mands-isbirligi-web-sitesi-banner512x60061c1.webp
+2024-01-14 14:42:42,427 [WARNING] django.request: Not Found: /Avis/media/Avis/anasayfa/avis-online-tr61c1.webp
+2024-01-14 14:42:42,605 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:42:42,613 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:42:42,700 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:42:42,706 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:42:42,714 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:42:42,730 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:42:42,731 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:42:42,755 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:42:42,756 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:42:42,759 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:42:42,777 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:42:42,790 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:42:42,801 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:42:42,810 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:44:49,408 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:44:49,417 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:44:49,451 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:44:49,454 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:44:49,455 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:44:49,456 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:44:49,457 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:44:49,468 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:44:49,506 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:44:49,508 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:44:49,513 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:44:49,515 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:44:49,533 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:44:49,535 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:49:42,940 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:49:42,953 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:49:42,955 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:49:42,969 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:49:42,978 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:49:42,985 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:49:42,991 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:49:43,000 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:49:43,006 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:49:43,014 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:49:43,021 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:49:43,028 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:49:43,035 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:49:43,227 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:49:44,659 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:49:44,683 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:49:44,685 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:49:44,696 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:49:44,697 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:49:44,708 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:49:44,709 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:49:44,720 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:49:44,721 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:49:44,730 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:49:44,731 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:49:44,742 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:49:44,743 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:49:44,753 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:58:26,217 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:58:26,226 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:58:26,356 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:58:26,361 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:58:26,375 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:58:26,382 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:58:26,396 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:58:26,401 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:58:26,415 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:58:26,496 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:58:26,501 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:58:26,507 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 14:58:26,519 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:58:26,531 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:58:35,672 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 14:59:03,214 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 14:59:03,255 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 14:59:03,256 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 14:59:03,269 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 14:59:03,270 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 14:59:03,348 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 14:59:03,350 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 14:59:03,366 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 14:59:03,367 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 14:59:03,379 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 14:59:03,437 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 14:59:03,438 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 14:59:03,452 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 14:59:03,453 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 15:00:33,754 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 15:01:33,512 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:01:33,661 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 15:01:33,668 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 15:01:33,981 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 15:01:33,983 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 15:01:33,984 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 15:01:33,985 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 15:01:33,995 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:01:34,027 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 15:01:34,029 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 15:01:34,031 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 15:01:34,033 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 15:01:34,050 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 15:01:34,079 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf
+2024-01-14 15:02:42,563 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:02:42,873 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:02:51,867 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:02:52,037 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:03:27,746 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:03:28,369 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:05:50,215 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:05:50,988 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:06:18,344 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:06:18,613 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:07:24,190 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:07:25,100 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:07:38,595 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:07:39,298 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:07:40,305 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:07:40,498 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:09:04,699 [WARNING] django.request: Not Found: /www.googletagmanager.com/gtm5445.html
+2024-01-14 15:09:05,578 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:25:42,902 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:31:10,020 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:31:24,814 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:32:02,751 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 15:41:04,452 [WARNING] django.request: Not Found: /kiralik-araba.html
+2024-01-14 15:41:04,497 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 16:01:52,963 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django_ckeditor_5\widgets.py", line 71, in render
+    context["upload_url"] = reverse("ck_editor_5_upload_file")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\urls\resolvers.py", line 848, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'ck_editor_5_upload_file' not found. 'ck_editor_5_upload_file' is not a valid view function or pattern name.
+2024-01-14 16:02:31,232 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader_tags.py", line 210, in render
+    return template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\test\utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 241, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\defaulttags.py", line 325, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1065, in render
+    return render_value_in_context(output, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 1042, in render_value_in_context
+    value = str(value)
+            ^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\utils.py", line 79, in __str__
+    return self.as_widget()
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\boundfield.py", line 108, in as_widget
+    return widget.render(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django_ckeditor_5\widgets.py", line 71, in render
+    context["upload_url"] = reverse("ck_editor_5_upload_file")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\urls\resolvers.py", line 848, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'ck_editor_5_upload_file' not found. 'ck_editor_5_upload_file' is not a valid view function or pattern name.
+2024-01-14 16:05:07,613 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 835, in get_form
+    return modelform_factory(self.model, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\models.py", line 651, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\models.py", line 331, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (sigorta_acentesi_misiniz, call_logo) specified for Frontend
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1837, in _changeform_view
+    ModelForm = self.get_form(
+                ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 837, in get_form
+    raise FieldError(
+django.core.exceptions.FieldError: Unknown field(s) (sigorta_acentesi_misiniz, call_logo) specified for Frontend. Check fields/fieldsets/exclude attributes of class FrontendAdmin.
+2024-01-14 16:05:09,154 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 835, in get_form
+    return modelform_factory(self.model, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\models.py", line 651, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\models.py", line 331, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (sigorta_acentesi_misiniz, call_logo) specified for Frontend
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1837, in _changeform_view
+    ModelForm = self.get_form(
+                ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 837, in get_form
+    raise FieldError(
+django.core.exceptions.FieldError: Unknown field(s) (sigorta_acentesi_misiniz, call_logo) specified for Frontend. Check fields/fieldsets/exclude attributes of class FrontendAdmin.
+2024-01-14 16:05:29,095 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 835, in get_form
+    return modelform_factory(self.model, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\models.py", line 651, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\forms\models.py", line 331, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (sigorta_acentesi_misiniz, call_logo) specified for Frontend
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1837, in _changeform_view
+    ModelForm = self.get_form(
+                ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 837, in get_form
+    raise FieldError(
+django.core.exceptions.FieldError: Unknown field(s) (sigorta_acentesi_misiniz, call_logo) specified for Frontend. Check fields/fieldsets/exclude attributes of class FrontendAdmin.
+2024-01-14 16:05:30,642 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: frontend.linkedin
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "C:\Users\tekin\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\debug_toolbar\panels\templates\panel.py", line 45, in _request_context_bind_template
+    context = processor(self.request)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\core\context_processors.py", line 22, in global_settings
+    ).order_by('-created_at').first()).data
+                              ^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 1095, in first
+    for obj in queryset[:1]:
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 1926, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 328, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: frontend.linkedin
+2024-01-14 16:06:10,322 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1853, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1257, in save_model
+    obj.save()
+  File "C:\Users\tekin\projects\car_rental\frontend\models.py", line 69, in save
+    self.slug = slugify(self.title)
+                ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\slugify\slugify.py", line 95, in slugify
+    text = str(text, 'utf-8', 'ignore')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: decoding to str: need a bytes-like object, NoneType found
+2024-01-14 16:06:54,805 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1859, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    object_repr=str(obj),
+                ^^^^^^^^
+TypeError: __str__ returned non-string (type NoneType)
+2024-01-14 16:07:28,844 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/add/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 714, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\sites.py", line 240, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1941, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1802, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 1859, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\contrib\admin\options.py", line 952, in log_addition
+    object_repr=str(obj),
+                ^^^^^^^^
+TypeError: __str__ returned non-string (type int)
+2024-01-14 16:07:45,550 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "C:\Users\tekin\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\debug_toolbar\panels\templates\panel.py", line 45, in _request_context_bind_template
+    context = processor(self.request)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\core\context_processors.py", line 22, in global_settings
+    ).order_by('-created_at').first()).data
+                                       ^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\serializers.py", line 59, in to_representation
+    context=self.context).data if obj.sigorta_acentesi_misiniz else None
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Frontend' object has no attribute 'sigorta_acentesi_misiniz'
+2024-01-14 16:08:49,473 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "C:\Users\tekin\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\debug_toolbar\panels\templates\panel.py", line 45, in _request_context_bind_template
+    context = processor(self.request)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\core\context_processors.py", line 22, in global_settings
+    ).order_by('-created_at').first()).data
+                                       ^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\serializers.py", line 59, in to_representation
+    context=self.context).data if obj.logo else None
+                                                     
+AttributeError: 'Frontend' object has no attribute 'sigorta_acentesi_misiniz'
+2024-01-14 16:08:51,130 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "C:\Users\tekin\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\debug_toolbar\panels\templates\panel.py", line 45, in _request_context_bind_template
+    context = processor(self.request)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\core\context_processors.py", line 22, in global_settings
+    ).order_by('-created_at').first()).data
+                                       ^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\serializers.py", line 61, in to_representation
+    context=self.context).data if obj.call_logo else None
+                                  ^^^^^^^^^^^^^
+AttributeError: 'Frontend' object has no attribute 'call_logo'
+2024-01-14 16:09:00,475 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "C:\Users\tekin\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\debug_toolbar\panels\templates\panel.py", line 45, in _request_context_bind_template
+    context = processor(self.request)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\core\context_processors.py", line 22, in global_settings
+    ).order_by('-created_at').first()).data
+                                       ^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\serializers.py", line 61, in to_representation
+    context=self.context).data if obj.favicon else None
+                                    ^^^^^^^^^^^^^
+AttributeError: 'Frontend' object has no attribute 'call_logo'
+2024-01-14 16:09:01,237 [ERROR] django.request: Internal Server Error: /admin/frontend/frontend/
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 169, in render
+    with context.bind_template(self):
+  File "C:\Users\tekin\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\debug_toolbar\panels\templates\panel.py", line 45, in _request_context_bind_template
+    context = processor(self.request)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\core\context_processors.py", line 22, in global_settings
+    ).order_by('-created_at').first()).data
+                                       ^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 555, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\serializers.py", line 61, in to_representation
+    context=self.context).data if obj.favicon else None
+                                    ^^^^^^^^^^^^^
+AttributeError: 'Frontend' object has no attribute 'call_logo'
+2024-01-14 16:25:30,223 [WARNING] django.request: Not Found: /kisisel-verilerin-korunmasi.html
+2024-01-14 16:25:30,368 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 16:54:07,033 [ERROR] django.request: Internal Server Error: /en.html
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 502, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 75, in get
+    template = loader.get_template(f'en.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\backends\django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\template\base.py", line 565, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: 'static'. Did you forget to register or load this tag?
+2024-01-14 16:58:08,462 [WARNING] django.request: Not Found: /None
+2024-01-14 17:01:11,029 [WARNING] django.request: Not Found: /{'id': 1, 'thumbnail': None, 'original': 'http://127.0.0.0:8000/media/attachments/6ca4f70e-578c-4ba7-a0f2-7c6f995af547.png', 'webp': None, 'title': 'Logo RGB', 'mime': None, 'pk': 1}
+2024-01-14 17:01:12,065 [WARNING] django.request: Not Found: /{'id': 1, 'thumbnail': None, 'original': 'http://127.0.0.0:8000/media/attachments/6ca4f70e-578c-4ba7-a0f2-7c6f995af547.png', 'webp': None, 'title': 'Logo RGB', 'mime': None, 'pk': 1}
+2024-01-14 17:01:13,751 [WARNING] django.request: Not Found: /{'id': 1, 'thumbnail': None, 'original': 'http://127.0.0.0:8000/media/attachments/6ca4f70e-578c-4ba7-a0f2-7c6f995af547.png', 'webp': None, 'title': 'Logo RGB', 'mime': None, 'pk': 1}
+2024-01-14 17:02:07,882 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 17:03:56,584 [WARNING] django.request: Not Found: /hesap/giris.html
+2024-01-14 17:03:56,668 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 17:25:44,651 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 17:28:15,175 [WARNING] django.request: Not Found: /hesap/bireysel-uye-ol
+2024-01-14 17:28:15,270 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 18:11:55,761 [WARNING] django.request: Not Found: /hesap/bireysel-uye-ol
+2024-01-14 18:12:49,684 [WARNING] django.request: Not Found: /register
+2024-01-14 18:14:26,388 [WARNING] django.request: Not Found: /forget-password
+2024-01-14 18:19:26,962 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2
+2024-01-14 18:19:26,965 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-iconsf9e7.ttf
+2024-01-14 18:19:26,966 [WARNING] django.request: Not Found: /assets/css/default.min.css' %}
+2024-01-14 18:19:26,968 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 18:19:26,968 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 18:19:26,970 [WARNING] django.request: Not Found: /assets/css/components.min.css' %}
+2024-01-14 18:19:27,003 [WARNING] django.request: Not Found: /assets/js/default.min.js
+2024-01-14 18:19:27,004 [WARNING] django.request: Not Found: /assets/js/jquery-3.7.1.min.js
+2024-01-14 18:19:27,005 [WARNING] django.request: Not Found: /assets/js/components.min.js
+2024-01-14 18:19:27,006 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 18:19:27,053 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff
+2024-01-14 18:19:27,058 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 18:19:27,060 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 18:19:27,066 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-iconsf134.ttf
+2024-01-14 18:19:27,083 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.ttf
+2024-01-14 18:19:27,108 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 18:19:27,110 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 18:19:27,116 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 18:19:29,379 [WARNING] django.request: Not Found: /Cookie/SetCookieSettings
+2024-01-14 18:19:48,049 [WARNING] django.request: Not Found: /assets/img/favicons/favicon.ico
+2024-01-14 18:30:49,743 [WARNING] django.request: Not Found: /hesap/bireysel-uye-ol
+2024-01-14 18:50:15,619 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 18:50:15,640 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 18:50:15,669 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 18:50:26,079 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 18:50:26,144 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 18:50:26,191 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 18:57:13,518 [WARNING] django.request: Not Found: /profile
+2024-01-14 18:57:13,618 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 18:57:34,846 [WARNING] django.request: Not Found: /register
+2024-01-14 19:00:09,702 [WARNING] django.request: Not Found: /register
+2024-01-14 19:15:45,021 [WARNING] django.request: Not Found: /media/favicon.ico
+2024-01-14 21:57:37,861 [WARNING] django.request: Not Found: /forget-password
+2024-01-14 22:04:13,756 [ERROR] django.request: Internal Server Error: /forget-password
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'password'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\views\generic\base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\frontend\views.py", line 191, in post
+    password = request.POST['password']
+               ~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\tekin\projects\car_rental\venv\Lib\site-packages\django\utils\datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'password'
+2024-01-14 22:27:33,167 [WARNING] django.request: Not Found: /assets/fonts/avis-icons/fonts/avis-icons.woff
+2024-01-14 22:27:33,362 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2
+2024-01-14 22:27:33,364 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff2
+2024-01-14 22:27:33,370 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff2
+2024-01-14 22:27:33,381 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff
+2024-01-14 22:27:33,383 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.woff
+2024-01-14 22:27:33,393 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.woff
+2024-01-14 22:27:33,397 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.ttf
+2024-01-14 22:27:33,405 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-regular.ttf
+2024-01-14 22:27:33,408 [WARNING] django.request: Not Found: /assets/fonts/open-sans/open-sans-v18-latin-ext_latin-800.ttf

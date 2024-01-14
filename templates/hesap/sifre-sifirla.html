@@ -1,0 +1,35 @@
+ {% extends "base.html" %} 
+{% load  static %} 
+{% block css %} 
+{% endblock %} 
+{% block main %}
+    <main>
+     <section class="membership-section">
+         <div class="container">
+             <div class="row">
+                 <div class="offset-xl-6 offset-lg-4 col-xl-12 col-lg-16 col-24">
+                     <div class="form-card">
+                         <div class="form-card-content">
+                             <div class="form-header">
+                                 <h1 class="title">Şifremi Unuttum</h1>
+                                 <p class="desc">Kayıtlı e-posta adresinizi yazarak yeni şifre alabilirsiniz.</p>
+                             </div>
+                             <form action="{{ ROOT }}/forget-password" class="primary-form" method="post">
+                                 {% csrf_token %}
+                                 <div class="form-group" data-recording-disable>
+                                     <label for="email" class="field-desc">E-Posta *</label>
+                                     <input class="form-control required email" type="email" id="email" name="email" data-msg-required="Bu alan boş bırakılamaz." data-msg-emailAddress="Geçersiz e-posta adresi." maxlength="50">
+                                 </div>
+                                 <button class="btn btn-rounded medium mx-md-auto" type="submit">
+                                     <span>ONAYLA</span>
+                                     <i class="icon icon-arrow-right"></i>
+                                 </button>
+                             </form>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section>
+ </main>
+{% endblock %}
