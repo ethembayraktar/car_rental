@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#D4002A">
+        <link href="{%static 'assets/fonts/avis-icons.svg' %}">
         <link href="{%static 'assets/fonts/avis-icons.ttf' %}">
         <link href="{%static 'assets/fonts/open-sans/open-sans-v18-latin-ext_latin-600.woff2' %}">
         <link href="{%static 'assets/fonts/open-sans/open-sans-v18-latin-ext_latin-700.woff2' %}">
@@ -70,7 +71,7 @@
                                 <div class="form-item">
                                     <input class="form-control" type="text" name="keyword" placeholder="{{ frontend.site_name }}’te Ara ..." maxlength="200">
                                     <button class="btn-submit" type="submit">
-                                        <i class="icon icon-search"></i>
+                                        <i class="fa-solid fa-magnifying-glass fa-2x"></i>
                                     </button>
                                 </div>
                             </form>
@@ -116,15 +117,15 @@
                                                                     <div class="tab-pane fade active show">
                                                                         <a class="btn btn-link ml-auto mb-2" href="{{ ROOT }}/forget-password">
                                                                             <span>ŞİFREMİ UNUTTUM</span>
-                                                                            <i class="icon icon-arrow-right"></i>
+                                                                            <i class="fa-solid fa-arrow-right"></i>
                                                                         </a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="has-icon" data-toggle="showPassword">
-                                                                <input class="form-control required" type="password" name="password">
+                                                            <div class="has-icon">
+                                                                <input class="form-control required" type="password" name="password" id="password_in_base">
                                                                 <div class="form-control-icon">
-                                                                    <i class="icon icon-eye" data-toggle="btn"></i>
+                                                                    <i class="fa-solid fa-eye-slash" onclick="show_password(password_in_base)"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -142,7 +143,7 @@
                                                                     <button class="btn btn-rounded medium ml-auto" type="submit">
                                                                         <span class="loading-text">BEKLEYİNİZ...</span>
                                                                         <span>OTURUM AÇ</span>
-                                                                        <i class="icon icon-arrow-right"></i>
+                                                                        <i class="fa-solid fa-arrow-right"></i>
                                                                     </button>
                                                                 </div>
                                                             </div>
@@ -153,7 +154,7 @@
                                                     <b class="title">{{ frontend.site_name }} hesabınız yok mu ?</b>
                                                     <a href="{{ ROOT }}/register" class="btn btn-link">
                                                         <span>{{ frontend.site_name }}’e Üye Olun</span>
-                                                        <i class="icon icon-arrow-right"></i>
+                                                        <i class="fa-solid fa-arrow-right"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -165,11 +166,11 @@
                                 <li class="dropdown d-none d-lg-flex">
                                     <div class="search-form">
                                         <button class="btn-search" type="button" data-toggle="dropdown">
-                                            <i class="icon icon-search"></i>
+                                            <i class="fa-solid fa-magnifying-glass"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <form class="d-flex align-items-center" id="searchFormDesktop" action="{{ ROOT }}/search" method="post">
-                                                <i class="icon icon-search"></i>
+                                                <i class="fa-solid fa-magnifying-glass"></i>
                                                 <input class="form-control" name="keyword" type="text" placeholder="{{ frontend.site_name }}’te Ara ..." maxlength="200" required>
                                                 <button class="btn btn-rounded small" type="submit">Ara</button>
                                             </form>
@@ -224,7 +225,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-rounded medium mr-auto" id="newsletter_submit_btn"disabled>
                                             <span>KAYIT OL</span>
-                                            <i class="icon icon-arrow-right"></i>
+                                            <i class="fa-solid fa-arrow-right"></i>
                                         </button>
                                     </form>
                                 </div>
@@ -466,19 +467,19 @@
                             <div class="col-md-12 col-24 d-flex flex-column-reverse flex-md-row justify-content-md-end">
                                 <div class="social-list">
                                     <a class="list-item" href="{{ frontend.facebook }}" target="_blank" rel="noreferrer">
-                                        <i class="icon icon-facebook"></i>
+                                        <i class="fa-brands fa-facebook"></i>
                                     </a>
                                     <a class="list-item" href="{{ frontend.instagram }}" target="_blank" rel="noreferrer">
-                                        <i class="icon icon-instagram"></i>
+                                        <i class="fa-brands fa-instagram"></i>
                                     </a>
                                     <a class="list-item" href="{{ frontend.linkedin}}" target="_blank" rel="noreferrer">
-                                        <i class="icon icon-linkedin"></i>
+                                        <i class="fa-brands fa-linkedin"></i>
                                     </a>
                                     <a class="list-item" href="{{ frontend.twitter }}" target="_blank" rel="noreferrer">
-                                        <i class="icon icon-twitter"></i>
+                                        <i class="fa-brands fa-twitter"></i>
                                     </a>
                                     <a class="list-item" href="{{ frontend.youtube }}" target="_blank" rel="noreferrer">
-                                        <i class="icon icon-youtube"></i>
+                                        <i class="fa-brands fa-youtube"></i>
                                     </a>
                                 </div>
                                 <a class="language-select" href="en.html">
@@ -631,26 +632,12 @@
                 </div>
             </div>
         {% endblock %}
-     
- 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="{%static 'assets/js/jquery-3.7.1.min.js' %}"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="{%static 'assets/js/components.min.js' %}"></script>
-{#        <script src="{%static 'assets/js/default.min.js' %}"></script>#}
         <script src="{%static 'assets/js/ykb/passport.merchant.js' %}"></script>
         <script src="{%static 'assets/js/ykb/passport.mobile.native.js' %}"></script>
-         <script src="{% static 'assets/fontawesome/js/all.min.js' %}">
-    
-            <script>
-                function quickSelection(t){
-                                                    (this.permissions = { requiredCookies: !0, analytics: t, advertisingAndRetargeting: t, functionality: t }), this.sendCookieRequest();
-
-                }
-                function showCookieDetail(){
-                    
-                }
-            </script>
+        <script src="{% static 'assets/fontawesome/js/all.min.js' %}">
+         
         {% block js %}
         {% endblock %}
     </body>

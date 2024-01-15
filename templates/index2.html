@@ -76,7 +76,7 @@
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="Alış Ofisi Se&#231;iniz" name="fromLocation" v-model="fromLocation" v-on:input="getOfficeList('from', fromLocation)" v-on:focus="checkFromLocation" autocomplete="off" minlength="3" />
                     <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('from')">
-                        <i class="icon icon-target"></i>
+                        <i class="fa-solid fa-bullseye"></i>
                     </button>
                 </div>
                 <div class="office-list-wrapper scrollable-content" v-show="fromLocationShow">
@@ -89,7 +89,7 @@
                 <div class="form-group">
                     <input class="form-control" type="text" placeholder="İade Ofisi" name="toLocation" v-model="toLocation" v-on:input="getOfficeList('to', toLocation)" v-on:focus="checkToLocation" autocomplete="off" minlength="3" />
                     <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('to')">
-                        <i class="icon icon-target"></i>
+                        <i class="fa-solid fa-bullseye"></i>
                     </button>
                 </div>
                 <div class="office-list-wrapper scrollable-content" v-show="toLocationShow">
@@ -106,7 +106,7 @@
                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="Alış Ofisi Se&#231;iniz" name="fromLocation" v-model="fromLocation" v-on:input="getOfficeList('from', fromLocation)" v-on:focus="checkFromLocation" autocomplete="off" minlength="3" />
                                 <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('from')">
-                                    <i class="icon icon-target"></i>
+                                    <i class="fa-solid fa-bullseye"></i>
                                 </button>
                             </div>
                             <div class="office-list-wrapper scrollable-content" v-show="fromLocationShow">
@@ -148,7 +148,7 @@
                             <div class="form-group">
                                 <input class="form-control" type="text" placeholder="İade Ofisi" name="toLocation" v-model="toLocation" v-on:input="getOfficeList('to', toLocation)" v-on:focus="checkToLocation" autocomplete="off" minlength="3" />
                                 <button class="btn btn-find-location" type="button" v-on:click="getOfficeListByDistance('to')">
-                                    <i class="icon icon-target"></i>
+                                    <i class="fa-solid fa-bullseye"></i>
                                 </button>
                             </div>
                             <div class="office-list-wrapper scrollable-content" v-show="toLocationShow">
@@ -186,7 +186,7 @@
                 <div class="card-item item-btn d-none d-exxl-block">
                     <button class="btn btn-rounded" type="submit" :disabled="formSent">
 {#                        <span v-cloak>{{dayDiff === 0 ? 'G&#220;NL&#220;K KİRALA': dayDiff + ' GÜN KİRALA' }}</span>#}
-                        <i class="icon icon-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
@@ -235,7 +235,7 @@
             <div class="item item-btn d-exxl-none">
                 <button class="btn btn-rounded" type="submit">
 {#                    <span v-cloak>{{dayDiff === 0 ? 'G&#220;NL&#220;K KİRALA': dayDiff + ' GÜN KİRALA' }}</span>#}
-                    <i class="icon icon-arrow-right"></i>
+                    <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
         </div>
